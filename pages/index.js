@@ -1,65 +1,129 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import React, { useRef, useState, useEffect } from 'react';
+import Head from 'next/head';
+import styles from '../styles/Home.module.scss';
+
+import { shuffledArray } from '../utils/data';
+import { useNonInitialEffect } from '../hooks/useNonInitialEffect';
+
+import { gsap } from 'gsap/dist/gsap';
+import { RoughEase } from 'gsap/dist/EasePack';
+import { TextPlugin } from 'gsap/dist/TextPlugin';
+
+gsap.registerPlugin(TextPlugin, RoughEase);
 
 export default function Home() {
+  const [message, setMessage] = useState('write code');
+  const [counter, setCounter] = useState(0);
+  const [isTrue, setIsTrue] = useState(false);
+
+  const firstAnimRef = useRef();
+  const secondAnimRef = useRef();
+  const messageRef = useRef();
+  const firstCursorRef = useRef();
+  const secondCursorRef = useRef();
+  const buttonRef = useRef();
+
+  const masterTL = gsap.timeline();
+
+  useEffect(() => {
+    masterTL.to(secondCursorRef.current, {
+      duration: 0.75,
+      visibility: 'hidden',
+    });
+    masterTL.to(firstAnimRef.current, { duration: 1, text: 'Hello there!' });
+    masterTL.to(firstCursorRef.current, {
+      duration: 0.1,
+      visibility: 'hidden',
+    });
+    masterTL.to(secondCursorRef.current, {
+      duration: 0.1,
+      visibility: 'visible',
+    });
+    masterTL.to(secondAnimRef.current, {
+      duration: 1,
+      text: `I'm Alan, and I `,
+    });
+    masterTL.to(messageRef.current, { duration: 1, text: `${message}` });
+    masterTL.to(
+      buttonRef.current,
+      {
+        duration: 1,
+        y: 0,
+      },
+      '-=1.5'
+    );
+  }, []);
+
+  // fires when button is clicked
+  useNonInitialEffect(() => {
+    masterTL.to(messageRef.current, {
+      duration: 0.5,
+      text: ``,
+    });
+    masterTL.to(messageRef.current, { duration: 1, text: `${message}` });
+  }, [message]);
+
+  // will fire when page needs to transition
+  useNonInitialEffect(() => {
+    masterTL.to(messageRef.current, { duration: 0.25, text: ` ` });
+    masterTL.to(secondAnimRef.current, { duration: 0.25, text: ` ` });
+    masterTL.to(firstAnimRef.current, { duration: 0.25, text: ' ' }, '-=.1');
+    masterTL.to(firstCursorRef.current, {
+      duration: 0.1,
+      visibility: 'hidden',
+    });
+    masterTL.to(secondCursorRef.current, {
+      duration: 0.1,
+      visibility: 'hidden',
+    });
+    masterTL.to(
+      buttonRef.current,
+      {
+        duration: 1,
+        y: 200,
+      },
+      '-=.5'
+    );
+  }, [isTrue]);
+
+  const changeText = () => {
+    setMessage(shuffledArray[counter]);
+    if (counter < shuffledArray.length - 1) {
+      setCounter(counter + 1);
+    } else {
+      setCounter(0);
+    }
+  };
+
   return (
-    <div className={styles.container}>
+    <>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Portfolio - Alan Tran</title>
       </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+      <div className={styles.container}>
+        <h1 className={styles.hero}>
+          <span ref={firstAnimRef}></span>
+          <span ref={firstCursorRef} className={styles.cursor}>
+            _
+          </span>
         </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+        <h3>
+          <span ref={secondAnimRef}></span>
+          <span ref={messageRef}></span>
+          <span ref={secondCursorRef} className={styles.cursor}>
+            _
+          </span>
+        </h3>
+        <button
+          ref={buttonRef}
+          className={styles.btn}
+          onClick={() => {
+            changeText();
+          }}
         >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+          And what else?
+        </button>
+      </div>
+    </>
+  );
 }
