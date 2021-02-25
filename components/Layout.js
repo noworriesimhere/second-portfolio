@@ -11,12 +11,11 @@ import { TextPlugin } from 'gsap/dist/TextPlugin';
 
 gsap.registerPlugin(TextPlugin, RoughEase);
 
-const Layout = ({ children, activePage: { name } }) => {
+const Layout = ({ children, activePage: { name }, setIsTransitioning }) => {
   const [offsetTop, setOffsetTop] = useState(0);
   const [homeOffset, setHomeOffset] = useState(0);
   const [trigger, setTrigger] = useState(false);
 
-  const masterTL = gsap.timeline();
   const navRef = useRef();
   const homeRef = useRef();
   const highlightRef = useRef();
@@ -26,10 +25,10 @@ const Layout = ({ children, activePage: { name } }) => {
   const router = useRouter();
 
   useEffect(() => {
-    masterTL.to(navRef.current, { duration: 1, x: 0 }, 1);
     setHomeOffset(homeRef.current.offsetTop);
-    setOffsetTop(homeOffset);
-  }, [homeOffset, width, height]);
+    gsap.to(navRef.current, { duration: 1, x: 0 }, 1);
+    setTrigger(true);
+  }, [width, height]);
 
   useEffect(() => {
     let menuHeight = homeRef.current.clientHeight;
@@ -47,11 +46,22 @@ const Layout = ({ children, activePage: { name } }) => {
         trigger && setOffsetTop(homeOffset + menuHeight * 3);
         break;
     }
-  }, [homeRef.current, name, trigger]);
+    console.log(menuHeight);
+  }, [homeRef, name, trigger, width, height]);
 
   useEffect(() => {
     gsap.to(highlightRef.current, { duration: 0.5, y: offsetTop });
   }, [offsetTop]);
+
+  const changePage = (e, destination, destName) => {
+    e.preventDefault();
+    if (name === destName) return;
+    setIsTransitioning(true);
+    setTimeout(() => {
+      router.push(destination);
+      setIsTransitioning(false);
+    }, 600);
+  };
 
   return (
     <>
@@ -59,36 +69,43 @@ const Layout = ({ children, activePage: { name } }) => {
         <nav className={styles.nav} ref={navRef}>
           <ul>
             <div className={styles.highlight} ref={highlightRef} />
-            <Link href='/'>
-              <li
-                onMouseEnter={({ target: { offsetTop } }) => {
-                  setOffsetTop(offsetTop);
-                  setTrigger(false);
-                  console.log(offsetTop);
-                }}
-                onMouseLeave={(e) => {
-                  setTrigger(true);
-                }}
-                ref={homeRef}
-              >
-                Alan Tran
-              </li>
-            </Link>
-            <Link href='/about'>
-              <li
-                onMouseEnter={({ target: { offsetTop } }) => {
-                  setOffsetTop(offsetTop);
-                  setTrigger(false);
-                }}
-                onMouseLeave={(e) => {
-                  setTrigger(true);
-                }}
-              >
-                About Me
-              </li>
-            </Link>
+
+            <li
+              className={name === 'Home' ? styles.active : ''}
+              onMouseEnter={({ target: { offsetTop } }) => {
+                setOffsetTop(offsetTop);
+                setTrigger(false);
+              }}
+              onMouseLeave={(e) => {
+                setTrigger(true);
+              }}
+              onClick={(e) => {
+                changePage(e, '/', 'Home');
+              }}
+              ref={homeRef}
+            >
+              Alan Tran
+            </li>
+
+            <li
+              className={name === 'About' ? styles.active : ''}
+              onMouseEnter={({ target: { offsetTop } }) => {
+                setOffsetTop(offsetTop);
+                setTrigger(false);
+              }}
+              onMouseLeave={(e) => {
+                setTrigger(true);
+              }}
+              onClick={(e) => {
+                changePage(e, '/about', 'About');
+              }}
+            >
+              About Me
+            </li>
+
             <Link href='/portfolio'>
               <li
+                className={name === 'Portfolio' ? styles.active : ''}
                 onMouseEnter={({ target: { offsetTop } }) => {
                   setOffsetTop(offsetTop);
                   setTrigger(false);
@@ -102,6 +119,7 @@ const Layout = ({ children, activePage: { name } }) => {
             </Link>
             <Link href='/contact'>
               <li
+                className={name === 'Contact' ? styles.active : ''}
                 onMouseEnter={({ target: { offsetTop } }) => {
                   setOffsetTop(offsetTop);
                   setTrigger(false);

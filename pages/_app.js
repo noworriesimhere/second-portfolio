@@ -7,11 +7,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <Layout activePage={Component} setIsTransitioning={setIsTransitioning}>
-      <Component
-        {...pageProps}
-        isTransitioning={isTransitioning}
-        setIsTransitioning={setIsTransitioning}
-      />
+      <Component {...pageProps} isTransitioning={isTransitioning} />
     </Layout>
   );
 }

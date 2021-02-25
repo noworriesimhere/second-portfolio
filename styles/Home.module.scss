@@ -43,6 +43,7 @@
 }
 
 .cursor {
+  visibility: hidden;
   animation-name: blink;
   animation-duration: 0.8s;
   animation-iteration-count: infinite;

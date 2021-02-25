@@ -11,10 +11,9 @@ import { TextPlugin } from 'gsap/dist/TextPlugin';
 
 gsap.registerPlugin(TextPlugin, RoughEase);
 
-export default function Home() {
+export default function Home({ isTransitioning }) {
   const [message, setMessage] = useState('write code');
   const [counter, setCounter] = useState(0);
-  const [isTrue, setIsTrue] = useState(false);
 
   const firstAnimRef = useRef();
   const secondAnimRef = useRef();
@@ -23,68 +22,39 @@ export default function Home() {
   const secondCursorRef = useRef();
   const buttonRef = useRef();
 
-  const masterTL = gsap.timeline();
+  let masterTL = gsap.timeline();
 
   useEffect(() => {
-    masterTL.to(secondCursorRef.current, {
-      duration: 0.75,
-      visibility: 'hidden',
-    });
-    masterTL.to(firstAnimRef.current, { duration: 1, text: 'Hello there!' });
-    masterTL.to(firstCursorRef.current, {
-      duration: 0.1,
-      visibility: 'hidden',
-    });
-    masterTL.to(secondCursorRef.current, {
-      duration: 0.1,
-      visibility: 'visible',
-    });
-    masterTL.to(secondAnimRef.current, {
-      duration: 1,
-      text: `I'm Alan, and I `,
-    });
-    masterTL.to(messageRef.current, { duration: 1, text: `${message}` });
-    masterTL.to(
-      buttonRef.current,
-      {
-        duration: 1,
-        y: 0,
-      },
-      '-=1.5'
-    );
+    masterTL
+      .to(firstCursorRef.current, { duration: 0.2, visibility: 'visible' })
+      .to(firstAnimRef.current, { duration: 1, text: 'Hello there!' })
+      .to(firstCursorRef.current, { duration: 0.1, visibility: 'hidden' })
+      .to(secondCursorRef.current, { duration: 0.1, visibility: 'visible' })
+      .to(secondAnimRef.current, { duration: 0.75, text: `I'm Alan, and I ` })
+      .to(messageRef.current, { duration: 0.75, text: `${message}` })
+      .to(buttonRef.current, { duration: 1, y: 0 }, '-=1.5');
   }, []);
 
   // fires when button is clicked
   useNonInitialEffect(() => {
-    masterTL.to(messageRef.current, {
-      duration: 0.5,
-      text: ``,
-    });
-    masterTL.to(messageRef.current, { duration: 1, text: `${message}` });
+    masterTL
+      .to(messageRef.current, {
+        duration: 0.5,
+        text: ``,
+      })
+      .to(messageRef.current, { duration: 1, text: `${message}` });
   }, [message]);
 
   // will fire when page needs to transition
   useNonInitialEffect(() => {
-    masterTL.to(messageRef.current, { duration: 0.25, text: ` ` });
-    masterTL.to(secondAnimRef.current, { duration: 0.25, text: ` ` });
-    masterTL.to(firstAnimRef.current, { duration: 0.25, text: ' ' }, '-=.1');
-    masterTL.to(firstCursorRef.current, {
-      duration: 0.1,
-      visibility: 'hidden',
-    });
-    masterTL.to(secondCursorRef.current, {
-      duration: 0.1,
-      visibility: 'hidden',
-    });
-    masterTL.to(
-      buttonRef.current,
-      {
-        duration: 1,
-        y: 200,
-      },
-      '-=.5'
-    );
-  }, [isTrue]);
+    masterTL
+      .to(messageRef.current, { duration: 0.25, text: ` ` })
+      .to(secondAnimRef.current, { duration: 0.25, text: ` ` })
+      .to(firstAnimRef.current, { duration: 0.25, text: ' ' }, '-=.1')
+      .to(firstCursorRef.current, { duration: 0.1, visibility: 'hidden' })
+      .to(secondCursorRef.current, { duration: 0.1, visibility: 'hidden' })
+      .to(buttonRef.current, { duration: 1, y: 200 }, '-=.5');
+  }, [isTransitioning]);
 
   const changeText = () => {
     setMessage(shuffledArray[counter]);
