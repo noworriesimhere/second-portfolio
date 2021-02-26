@@ -11,7 +11,7 @@ import { TextPlugin } from 'gsap/dist/TextPlugin';
 
 gsap.registerPlugin(TextPlugin, RoughEase);
 
-const Layout = ({ children, activePage: { name }, setIsTransitioning }) => {
+const Layout = ({ children, setIsTransitioning }) => {
   const [offsetTop, setOffsetTop] = useState(0);
   const [homeOffset, setHomeOffset] = useState(0);
   const [trigger, setTrigger] = useState(false);
@@ -23,6 +23,7 @@ const Layout = ({ children, activePage: { name }, setIsTransitioning }) => {
   const { ref, width, height } = useResizeDetector();
 
   const router = useRouter();
+  let name = router.pathname;
 
   useEffect(() => {
     setHomeOffset(homeRef.current.offsetTop);
@@ -33,16 +34,16 @@ const Layout = ({ children, activePage: { name }, setIsTransitioning }) => {
   useEffect(() => {
     let menuHeight = homeRef.current.clientHeight;
     switch (name) {
-      case 'Home':
+      case '/':
         trigger && setOffsetTop(homeOffset);
         break;
-      case 'About':
+      case '/about':
         trigger && setOffsetTop(homeOffset + menuHeight);
         break;
-      case 'Portfolio':
+      case '/portfolio':
         trigger && setOffsetTop(homeOffset + menuHeight * 2);
         break;
-      case 'Contact':
+      case '/contact':
         trigger && setOffsetTop(homeOffset + menuHeight * 3);
         break;
     }
@@ -53,9 +54,9 @@ const Layout = ({ children, activePage: { name }, setIsTransitioning }) => {
     gsap.to(highlightRef.current, { duration: 0.5, y: offsetTop });
   }, [offsetTop]);
 
-  const changePage = (e, destination, destName) => {
+  const changePage = (e, destination) => {
     e.preventDefault();
-    if (name === destName) return;
+    if (name === destination) return;
     setIsTransitioning(true);
     setTimeout(() => {
       router.push(destination);
@@ -71,7 +72,7 @@ const Layout = ({ children, activePage: { name }, setIsTransitioning }) => {
             <div className={styles.highlight} ref={highlightRef} />
 
             <li
-              className={name === 'Home' ? styles.active : ''}
+              className={name === '/' ? styles.active : ''}
               onMouseEnter={({ target: { offsetTop } }) => {
                 setOffsetTop(offsetTop);
                 setTrigger(false);
@@ -80,7 +81,7 @@ const Layout = ({ children, activePage: { name }, setIsTransitioning }) => {
                 setTrigger(true);
               }}
               onClick={(e) => {
-                changePage(e, '/', 'Home');
+                changePage(e, '/');
               }}
               ref={homeRef}
             >
@@ -88,7 +89,7 @@ const Layout = ({ children, activePage: { name }, setIsTransitioning }) => {
             </li>
 
             <li
-              className={name === 'About' ? styles.active : ''}
+              className={name === '/about' ? styles.active : ''}
               onMouseEnter={({ target: { offsetTop } }) => {
                 setOffsetTop(offsetTop);
                 setTrigger(false);
@@ -97,7 +98,7 @@ const Layout = ({ children, activePage: { name }, setIsTransitioning }) => {
                 setTrigger(true);
               }}
               onClick={(e) => {
-                changePage(e, '/about', 'About');
+                changePage(e, '/about');
               }}
             >
               About Me
@@ -105,7 +106,7 @@ const Layout = ({ children, activePage: { name }, setIsTransitioning }) => {
 
             <Link href='/portfolio'>
               <li
-                className={name === 'Portfolio' ? styles.active : ''}
+                className={name === '/portfolio' ? styles.active : ''}
                 onMouseEnter={({ target: { offsetTop } }) => {
                   setOffsetTop(offsetTop);
                   setTrigger(false);
@@ -119,7 +120,7 @@ const Layout = ({ children, activePage: { name }, setIsTransitioning }) => {
             </Link>
             <Link href='/contact'>
               <li
-                className={name === 'Contact' ? styles.active : ''}
+                className={name === '/contact' ? styles.active : ''}
                 onMouseEnter={({ target: { offsetTop } }) => {
                   setOffsetTop(offsetTop);
                   setTrigger(false);
