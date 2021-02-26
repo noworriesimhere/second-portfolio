@@ -11,7 +11,7 @@ import { TextPlugin } from 'gsap/dist/TextPlugin';
 
 gsap.registerPlugin(TextPlugin, RoughEase);
 
-const Layout = ({ children, setIsTransitioning }) => {
+const Layout = ({ children, setIsTransitioning, isTransitioning }) => {
   const [offsetTop, setOffsetTop] = useState(0);
   const [homeOffset, setHomeOffset] = useState(0);
   const [trigger, setTrigger] = useState(false);
@@ -33,6 +33,7 @@ const Layout = ({ children, setIsTransitioning }) => {
 
   useEffect(() => {
     let menuHeight = homeRef.current.clientHeight;
+    if (isTransitioning) return; // to set the highlighter over the new menu item
     switch (name) {
       case '/':
         trigger && setOffsetTop(homeOffset);
@@ -47,7 +48,6 @@ const Layout = ({ children, setIsTransitioning }) => {
         trigger && setOffsetTop(homeOffset + menuHeight * 3);
         break;
     }
-    console.log(menuHeight);
   }, [homeRef, name, trigger, width, height]);
 
   useEffect(() => {
@@ -64,6 +64,17 @@ const Layout = ({ children, setIsTransitioning }) => {
     }, 600);
   };
 
+  const hoverEnter = ({ target: { offsetTop } }) => {
+    if (isTransitioning) return;
+    setOffsetTop(offsetTop);
+    setTrigger(false);
+  };
+
+  const hoverExit = () => {
+    if (isTransitioning) return;
+    setTrigger(true);
+  };
+
   return (
     <>
       <div className={styles.container} ref={ref}>
@@ -73,13 +84,8 @@ const Layout = ({ children, setIsTransitioning }) => {
 
             <li
               className={name === '/' ? styles.active : ''}
-              onMouseEnter={({ target: { offsetTop } }) => {
-                setOffsetTop(offsetTop);
-                setTrigger(false);
-              }}
-              onMouseLeave={(e) => {
-                setTrigger(true);
-              }}
+              onMouseEnter={(e) => hoverEnter(e)}
+              onMouseLeave={(e) => hoverExit()}
               onClick={(e) => {
                 changePage(e, '/');
               }}
@@ -90,13 +96,8 @@ const Layout = ({ children, setIsTransitioning }) => {
 
             <li
               className={name === '/about' ? styles.active : ''}
-              onMouseEnter={({ target: { offsetTop } }) => {
-                setOffsetTop(offsetTop);
-                setTrigger(false);
-              }}
-              onMouseLeave={(e) => {
-                setTrigger(true);
-              }}
+              onMouseEnter={(e) => hoverEnter(e)}
+              onMouseLeave={(e) => hoverExit()}
               onClick={(e) => {
                 changePage(e, '/about');
               }}
@@ -107,13 +108,8 @@ const Layout = ({ children, setIsTransitioning }) => {
             <Link href='/portfolio'>
               <li
                 className={name === '/portfolio' ? styles.active : ''}
-                onMouseEnter={({ target: { offsetTop } }) => {
-                  setOffsetTop(offsetTop);
-                  setTrigger(false);
-                }}
-                onMouseLeave={(e) => {
-                  setTrigger(true);
-                }}
+                onMouseEnter={(e) => hoverEnter(e)}
+                onMouseLeave={(e) => hoverExit()}
               >
                 Portfolio
               </li>
@@ -121,13 +117,8 @@ const Layout = ({ children, setIsTransitioning }) => {
             <Link href='/contact'>
               <li
                 className={name === '/contact' ? styles.active : ''}
-                onMouseEnter={({ target: { offsetTop } }) => {
-                  setOffsetTop(offsetTop);
-                  setTrigger(false);
-                }}
-                onMouseLeave={(e) => {
-                  setTrigger(true);
-                }}
+                onMouseEnter={(e) => hoverEnter(e)}
+                onMouseLeave={(e) => hoverExit()}
               >
                 Contact
               </li>

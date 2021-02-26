@@ -15,6 +15,7 @@ const About = ({ isTransitioning }) => {
   const firstAnimRef = useRef();
   const secondAnimRef = useRef();
   const thirdAnimRef = useRef();
+  const fourthAnimRef = useRef();
   const firstCursorRef = useRef();
   const secondCursorRef = useRef();
   const thirdCursorRef = useRef();
@@ -23,12 +24,12 @@ const About = ({ isTransitioning }) => {
 
   useEffect(() => {
     masterTL
-      .to(firstCursorRef.current, { duration: 0.2, visibility: 'visible' })
+      .to(firstCursorRef.current, { duration: 0.1, visibility: 'visible' })
       .to(firstAnimRef.current, { duration: 0.5, text: 'Web Dev' })
       .to(firstCursorRef.current, { duration: 0.1, visibility: 'hidden' })
       .to(secondCursorRef.current, { duration: 0.1, visibility: 'visible' })
       .to(secondAnimRef.current, {
-        duration: 0.75,
+        duration: 0.5,
         text: `Based in NYC`,
       })
       .to(secondCursorRef.current, { duration: 0.1, visibility: 'hidden' })
@@ -38,12 +39,24 @@ const About = ({ isTransitioning }) => {
         text: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi
       tempora, doloribus veritatis error animi qui dolores repellat,
       possimus dicta nisi, odit ipsa pariatur at vitae.`,
-      });
+      })
+      .to(
+        fourthAnimRef.current,
+        {
+          duration: 1,
+          y: 0,
+        },
+        '-=1'
+      );
   }, []);
 
   // will fire when page needs to transition
   useNonInitialEffect(() => {
     masterTL
+      .to(fourthAnimRef.current, {
+        duration: 1,
+        y: 1000,
+      })
       .to(thirdAnimRef.current, { duration: 0.25, text: ` ` })
       .to(thirdCursorRef.current, { duration: 0.1, visibility: 'hidden' })
       .to(secondAnimRef.current, { duration: 0.25, text: ` ` }, '-=.1')
@@ -76,13 +89,17 @@ const About = ({ isTransitioning }) => {
               </span>
             </p>
           </article>
-          <figure className={styles.right}>
-            <Image
-              src='/portrait.png'
-              alt='Portrait of me'
-              width={433}
-              height={577}
-            />
+          <figure className={styles.right} ref={fourthAnimRef}>
+            <aside className={styles.background} />
+            <aside className={styles.portrait}>
+              <Image
+                src='/portrait.png'
+                alt='Portrait of me'
+                width={250}
+                height={366}
+                className={styles.img}
+              />
+            </aside>
           </figure>
         </section>
       </main>

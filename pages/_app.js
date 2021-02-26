@@ -6,7 +6,10 @@ function MyApp({ Component, pageProps }) {
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   return (
-    <Layout setIsTransitioning={setIsTransitioning}>
+    <Layout
+      setIsTransitioning={setIsTransitioning}
+      isTransitioning={isTransitioning}
+    >
       <Component {...pageProps} isTransitioning={isTransitioning} />
     </Layout>
   );
