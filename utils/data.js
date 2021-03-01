@@ -7,7 +7,7 @@ const textArray = [
   'started learning on Udemy',
   'cook ethnic meals',
   'push to Github',
-  'express my emotions in commit messages',
+  'express frustration in commit messages',
   'need to refactor more',
   'am working at being a Google ninja',
   'write clean code',
@@ -19,6 +19,7 @@ const textArray = [
   'am not a nerd',
   'take long walks on the beach',
   `think you've been clicking this a lot`,
+  `type this fast...`,
 ];
 
 export const shuffledArray = textArray.sort(() => Math.random() - 0.5);

@@ -30,9 +30,9 @@ const About = ({ isTransitioning }) => {
       .to(secondCursorRef.current, { duration: 0.1, visibility: 'visible' })
       .to(secondAnimRef.current, {
         duration: 0.75,
-        text: `Self-taught & still self-teaching `,
+        text: `Self-taught && self-teaching `,
       })
-      .to(secondCursorRef.current, { duration: 0.1, text: ' ' })
+      .to(secondCursorRef.current, { duration: 0.1, visibility: 'hidden' })
       .to(thirdCursorRef.current, { duration: 0.1, visibility: 'visible' })
       .to(thirdAnimRef.current, {
         duration: 5,
@@ -43,7 +43,7 @@ const About = ({ isTransitioning }) => {
         The Frameworks: <br />
         React / NextJS <br /> <br />
         The Back-End: <br />
-        NodeJS, Express, Mongoose, MongoDB, Firebase <br /> <br />
+        NodeJS / Express / Mongoose / MongoDB / Firebase <br /> <br />
         ...and still learning!
         `,
       })

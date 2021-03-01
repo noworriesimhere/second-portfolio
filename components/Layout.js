@@ -105,24 +105,27 @@ const Layout = ({ children, setIsTransitioning, isTransitioning }) => {
               About Me
             </li>
 
-            <Link href='/portfolio'>
-              <li
-                className={name === '/portfolio' ? styles.active : ''}
-                onMouseEnter={(e) => hoverEnter(e)}
-                onMouseLeave={() => hoverExit()}
-              >
-                Portfolio
-              </li>
-            </Link>
-            <Link href='/contact'>
-              <li
-                className={name === '/contact' ? styles.active : ''}
-                onMouseEnter={(e) => hoverEnter(e)}
-                onMouseLeave={() => hoverExit()}
-              >
-                Contact
-              </li>
-            </Link>
+            <li
+              className={name === '/portfolio' ? styles.active : ''}
+              onMouseEnter={(e) => hoverEnter(e)}
+              onMouseLeave={() => hoverExit()}
+              onClick={(e) => {
+                changePage(e, '/portfolio');
+              }}
+            >
+              Portfolio
+            </li>
+
+            <li
+              className={name === '/contact' ? styles.active : ''}
+              onMouseEnter={(e) => hoverEnter(e)}
+              onMouseLeave={() => hoverExit()}
+              onClick={(e) => {
+                changePage(e, '/contact');
+              }}
+            >
+              Contact
+            </li>
           </ul>
         </nav>
         <main className={styles.main}>{children}</main>
