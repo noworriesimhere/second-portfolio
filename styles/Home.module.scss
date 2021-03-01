@@ -4,18 +4,18 @@
   justify-content: space-between;
   align-items: flex-start;
   text-align: left;
-  position: absolute;
-  width: 75%;
+  width: 90%;
   height: 600px;
   overflow: hidden;
 
+  h1,
   h3 {
-    height: 200px;
     margin: 0;
   }
 }
 
 .btn {
+  justify-self: flex-end;
   outline: none;
   border: none;
   cursor: pointer;

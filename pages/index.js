@@ -27,11 +27,11 @@ export default function Home({ isTransitioning }) {
   useEffect(() => {
     masterTL
       .to(firstCursorRef.current, { duration: 0.2, visibility: 'visible' })
-      .to(firstAnimRef.current, { duration: 1, text: 'Hello there!' })
+      .to(firstAnimRef.current, { duration: 0.5, text: 'Hello there!' })
       .to(firstCursorRef.current, { duration: 0.1, visibility: 'hidden' })
       .to(secondCursorRef.current, { duration: 0.1, visibility: 'visible' })
-      .to(secondAnimRef.current, { duration: 0.75, text: `I'm Alan, and I ` })
-      .to(messageRef.current, { duration: 0.75, text: `${message}` })
+      .to(secondAnimRef.current, { duration: 0.5, text: `I'm Alan, and I ` })
+      .to(messageRef.current, { duration: 0.5, text: `${message}` })
       .to(buttonRef.current, { duration: 1, y: 0 }, '-=1.5');
   }, []);
 
@@ -39,10 +39,10 @@ export default function Home({ isTransitioning }) {
   useNonInitialEffect(() => {
     masterTL
       .to(messageRef.current, {
-        duration: 0.5,
+        duration: 0.25,
         text: ``,
       })
-      .to(messageRef.current, { duration: 1, text: `${message}` });
+      .to(messageRef.current, { duration: 0.75, text: `${message}` });
   }, [message]);
 
   // will fire when page needs to transition
@@ -71,19 +71,21 @@ export default function Home({ isTransitioning }) {
         <title>Portfolio - Alan Tran</title>
       </Head>
       <div className={styles.container}>
-        <h1 className={styles.hero}>
-          <span ref={firstAnimRef}></span>
-          <span ref={firstCursorRef} className={styles.cursor}>
-            _
-          </span>
-        </h1>
-        <h3>
-          <span ref={secondAnimRef}></span>
-          <span ref={messageRef}></span>
-          <span ref={secondCursorRef} className={styles.cursor}>
-            _
-          </span>
-        </h3>
+        <header>
+          <h1 className={styles.hero}>
+            <span ref={firstAnimRef}></span>
+            <span ref={firstCursorRef} className={styles.cursor}>
+              _
+            </span>
+          </h1>
+          <h3>
+            <span ref={secondAnimRef}></span>
+            <span ref={messageRef}></span>
+            <span ref={secondCursorRef} className={styles.cursor}>
+              _
+            </span>
+          </h3>
+        </header>
         <button
           ref={buttonRef}
           className={styles.btn}
@@ -91,7 +93,7 @@ export default function Home({ isTransitioning }) {
             changeText();
           }}
         >
-          And what else?
+          and what else?
         </button>
       </div>
     </>

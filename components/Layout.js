@@ -85,7 +85,7 @@ const Layout = ({ children, setIsTransitioning, isTransitioning }) => {
             <li
               className={name === '/' ? styles.active : ''}
               onMouseEnter={(e) => hoverEnter(e)}
-              onMouseLeave={(e) => hoverExit()}
+              onMouseLeave={() => hoverExit()}
               onClick={(e) => {
                 changePage(e, '/');
               }}
@@ -97,7 +97,7 @@ const Layout = ({ children, setIsTransitioning, isTransitioning }) => {
             <li
               className={name === '/about' ? styles.active : ''}
               onMouseEnter={(e) => hoverEnter(e)}
-              onMouseLeave={(e) => hoverExit()}
+              onMouseLeave={() => hoverExit()}
               onClick={(e) => {
                 changePage(e, '/about');
               }}
@@ -109,7 +109,7 @@ const Layout = ({ children, setIsTransitioning, isTransitioning }) => {
               <li
                 className={name === '/portfolio' ? styles.active : ''}
                 onMouseEnter={(e) => hoverEnter(e)}
-                onMouseLeave={(e) => hoverExit()}
+                onMouseLeave={() => hoverExit()}
               >
                 Portfolio
               </li>
@@ -118,7 +118,7 @@ const Layout = ({ children, setIsTransitioning, isTransitioning }) => {
               <li
                 className={name === '/contact' ? styles.active : ''}
                 onMouseEnter={(e) => hoverEnter(e)}
-                onMouseLeave={(e) => hoverExit()}
+                onMouseLeave={() => hoverExit()}
               >
                 Contact
               </li>
