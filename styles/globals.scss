@@ -2,6 +2,7 @@
 
 html {
   font-size: 18px;
+  cursor: none !important;
 }
 
 :root {
@@ -62,6 +63,24 @@ a {
 
 p {
   margin-bottom: 1rem;
+}
+
+.cursor {
+  width: 3rem;
+  height: 3rem;
+  //background: white;
+  border: 4px solid white;
+  border-radius: 50%;
+  position: fixed;
+  z-index: 999;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transform-origin: 100% 100%;
+  mix-blend-mode: difference;
+}
+
+.link-grow {
+  background: white;
 }
 
 h1,
