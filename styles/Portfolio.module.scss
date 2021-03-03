@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  flex-direction: column;
+
+  width: 90%;
+  height: 600px;
+  overflow: hidden;
+}
+
+.grid {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+}
+.box {
+  height: 200px;
+  width: 200px;
+  background-color: var(--color-background-light);
+  font-size: var(--baseNavSize);
+  color: var(--color-background-dark);
+  border-radius: 15px;
+  box-shadow: 0 5px var(--color-background-dark);
+  margin: 0.5rem;
+}
+
+.cursor {
+  visibility: hidden;
+  animation-name: blink;
+  animation-duration: 0.8s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

@@ -1,9 +1,9 @@
 import React, { useRef, useEffect } from 'react';
 import Head from 'next/head';
-import styles from '../../styles/About.module.scss';
+import styles from '../styles/About.module.scss';
 import Image from 'next/image';
 
-import { useNonInitialEffect } from '../../hooks/useNonInitialEffect';
+import { useNonInitialEffect } from '../hooks/useNonInitialEffect';
 
 import { gsap } from 'gsap/dist/gsap';
 import { RoughEase } from 'gsap/dist/EasePack';
@@ -35,7 +35,7 @@ const About = ({ isTransitioning }) => {
       .to(secondCursorRef.current, { duration: 0.1, visibility: 'hidden' })
       .to(thirdCursorRef.current, { duration: 0.1, visibility: 'visible' })
       .to(thirdAnimRef.current, {
-        duration: 5,
+        duration: 3,
         text: `
         Some technologies that I use: <br /> <br />
         The Front-End Fundamentals: <br /> 
