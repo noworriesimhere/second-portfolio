@@ -125,6 +125,16 @@ const Layout = ({ children, setIsTransitioning, isTransitioning }) => {
             >
               Contact
             </li>
+            <li
+              className={name === '/resume' ? styles.active : ''}
+              onMouseEnter={(e) => hoverEnter(e)}
+              onMouseLeave={() => hoverExit()}
+              onClick={(e) => {
+                changePage(e, '/resume');
+              }}
+            >
+              Resume
+            </li>
           </ul>
         </nav>
         <main className={styles.main}>{children}</main>
