@@ -79,7 +79,13 @@ const Layout = ({ children, setIsTransitioning, isTransitioning }) => {
       <div className={styles.container} ref={ref}>
         <nav className={styles.nav} ref={navRef}>
           <ul>
-            <div className={styles.highlight} ref={highlightRef} />
+            <div
+              className={styles.highlight}
+              ref={highlightRef}
+              style={{
+                height: homeRef.current && homeRef.current.clientHeight,
+              }}
+            />
 
             <li
               className={name === '/' ? styles.active : ''}
@@ -90,7 +96,7 @@ const Layout = ({ children, setIsTransitioning, isTransitioning }) => {
               }}
               ref={homeRef}
             >
-              Alan Tran
+              Home
             </li>
 
             <li

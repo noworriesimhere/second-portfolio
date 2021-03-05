@@ -8,12 +8,7 @@ function MyApp({ Component, pageProps }) {
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   return (
-    <Cursor
-      onMouseMove={(e) => {
-        cursor(e);
-      }}
-      Component={Component}
-    >
+    <Cursor Component={Component}>
       <Layout
         setIsTransitioning={setIsTransitioning}
         isTransitioning={isTransitioning}

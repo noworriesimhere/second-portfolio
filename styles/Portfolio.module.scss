@@ -1,27 +1,15 @@
 .container {
   display: flex;
   flex-direction: column;
-
-  width: 90%;
-  height: 600px;
+  width: 95%;
+  height: 800px;
   overflow: hidden;
 }
 
-.grid {
+.flex {
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
-}
-.box {
-  height: 180px;
-  width: 180px;
-  background-color: var(--color-background-light);
-  font-size: var(--baseNavSize);
-  color: var(--color-background-dark);
-  border-radius: 15px;
-  box-shadow: 0 5px var(--color-background-dark);
-  margin: 0.5rem;
-  padding: 1rem;
 }
 
 .cursor {

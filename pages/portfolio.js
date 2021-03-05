@@ -2,6 +2,9 @@ import Head from 'next/head';
 import React, { useRef, useEffect } from 'react';
 import styles from '../styles/Portfolio.module.scss';
 
+import PortfolioItem from '../components/PortfolioItem';
+import { projects } from '../utils/data';
+
 import { gsap } from 'gsap/dist/gsap';
 import { RoughEase } from 'gsap/dist/EasePack';
 import { TextPlugin } from 'gsap/dist/TextPlugin';
@@ -37,13 +40,17 @@ const Portfolio = () => {
             _
           </span>
         </h1>
-        <section className={styles.grid}>
-          <div className={styles.box}></div>
-          <div className={styles.box}></div>
-          <div className={styles.box}></div>
-          <div className={styles.box}></div>
-          <div className={styles.box}></div>
-          <div className={styles.box}></div>
+        <section className={styles.flex}>
+          {projects.map((project) => (
+            <PortfolioItem
+              name={project.name}
+              date={project.date}
+              description={project.description}
+              src={project.src}
+              url={project.url}
+              key={project.key}
+            />
+          ))}
         </section>
       </main>
     </>

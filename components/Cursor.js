@@ -6,12 +6,8 @@ const Cursor = ({ children, Component }) => {
   const cursorRef = useRef();
   const linksRef = useRef();
 
-  const cursor = (e) => {
-    gsap.to(cursorRef.current, { duration: 0, x: e.clientX, y: e.clientY });
-  };
-
   useEffect(() => {
-    const links = linksRef.current.querySelectorAll('button, span');
+    const links = linksRef.current.querySelectorAll('button');
     links.forEach((link) => {
       link.addEventListener('mouseleave', () => {
         cursorRef.current.classList.remove('link-grow');
@@ -26,31 +22,52 @@ const Cursor = ({ children, Component }) => {
         gsap.to(cursorRef.current, { duration: 0.4, scale: 2 });
       });
     });
+    console.log('fired button');
+  }, [linksRef.current, Component]);
+
+  useEffect(() => {
+    const allLis = linksRef.current.querySelectorAll('li, a');
+    allLis.forEach((li) => {
+      li.addEventListener('mouseover', (e) => {
+        const location = e.target.getBoundingClientRect();
+        gsap.to(cursorRef.current, {
+          duration: 0.15,
+          x: location.left + location.width / 2, //centers the hover horizontally
+          y: location.top + location.height / 2, //centers the center vertically over menu item
+          width: location.width + 10, //just a tad more width to the box
+          height: location.height,
+          scale: 1,
+          borderRadius: '5px',
+          background: 'white',
+          opacity: 1,
+        });
+      });
+    });
+    console.log('fired li and a');
   }, [linksRef.current, Component]);
 
   return (
     <div
       ref={linksRef}
-      onMouseMove={(e) => {
-        if (e.target.localName === 'li') {
-          const location = e.target.getBoundingClientRect();
-          gsap.to(cursorRef.current, {
-            duration: 0.2,
-            x: location.left + location.width / 1.9,
-            y: location.top + location.height / 2,
-            width: location.width + 20,
-            height: location.height,
-            scale: 1,
-            borderRadius: '5px',
-          });
+      onPointerLeave={() => {
+        gsap.to(cursorRef.current, {
+          opacity: 0,
+        });
+        //cursor will disappear when moving away from window
+      }}
+      onPointerMove={(e) => {
+        if (e.target.localName === 'li' || e.target.localName === 'a') {
+          return;
         } else {
           gsap.to(cursorRef.current, {
-            duration: 0.2,
+            duration: 0.1,
             width: '3rem',
             height: '3rem',
             borderRadius: '50%',
             x: e.clientX,
             y: e.clientY,
+            background: 'none',
+            opacity: 1,
           });
         }
       }}
