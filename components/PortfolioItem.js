@@ -26,11 +26,11 @@ const PortfolioItem = ({ name, date, description, src, url }) => {
           })
           .to(secondAnimRef.current, {
             duration: 0.25,
-            text: date,
+            text: description,
           })
           .to(thirdAnimRef.current, {
             duration: 0.5,
-            text: description,
+            text: date,
           });
       }}
     >
@@ -39,8 +39,8 @@ const PortfolioItem = ({ name, date, description, src, url }) => {
         <h4>
           <a href={url} target='_blank' ref={firstAnimRef}></a>
         </h4>
-        <h5 ref={secondAnimRef}></h5>
-        <p ref={thirdAnimRef}></p>
+        <p ref={secondAnimRef}></p>
+        <small ref={thirdAnimRef}></small>
       </main>
     </div>
   );

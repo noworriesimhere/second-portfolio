@@ -40,10 +40,10 @@ export const projects = [
   {
     name: 'First Portfolio',
     date: 'December 2020',
-    description: `React <br />
-    Firebase <br />
-    Context API <br />
-    Styled Components
+    description: `HTML <br />
+    PostCSS <br />
+    Javascript <br />
+    Webpack
     `,
     src: '/portfolio-first.png',
     url: 'https://alantran.netlify.app/',
@@ -51,26 +51,25 @@ export const projects = [
   },
   {
     name: 'Custom Cakes',
-    date: 'October 2020',
-    description: `React <br />
-    Firebase <br />
-    Context API <br />
-    Styled Components
+    date: 'November 2020',
+    description: `HTML <br />
+    PostCSS <br />
+    Javascript <br />
+    Webpack
     `,
     src: '/portfolio-baking.png',
     url: 'https://createbakery.netlify.app/',
     key: 2,
   },
   {
-    name: 'Bakery Shop',
+    name: 'NYC Tours',
     date: 'October 2020',
-    description: `React <br />
-    Firebase <br />
-    Context API <br />
-    Styled Components
+    description: `HTML <br />
+    Bootstrap 4 <br />
+    Javascript <br />
     `,
-    src: '/portfolio-baking.png',
-    url: 'https://createbakery.netlify.app/',
+    src: '/portfolio-city.png',
+    url: 'https://parallaxtemplate.vercel.app/',
     key: 1,
   },
 ];
