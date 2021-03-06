@@ -17,8 +17,6 @@ const Portfolio = () => {
   const thirdAnimRef = useRef();
   const fourthAnimRef = useRef();
   const firstCursorRef = useRef();
-  const secondCursorRef = useRef();
-  const thirdCursorRef = useRef();
 
   const masterTL = gsap.timeline();
 
@@ -48,6 +46,7 @@ const Portfolio = () => {
               description={project.description}
               src={project.src}
               url={project.url}
+              github={project.github}
               key={project.key}
             />
           ))}

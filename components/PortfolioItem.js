@@ -8,10 +8,11 @@ import { TextPlugin } from 'gsap/dist/TextPlugin';
 
 gsap.registerPlugin(TextPlugin, RoughEase);
 
-const PortfolioItem = ({ name, date, description, src, url }) => {
+const PortfolioItem = ({ name, date, description, src, url, github }) => {
   const firstAnimRef = useRef();
   const secondAnimRef = useRef();
   const thirdAnimRef = useRef();
+  const fourthAnimRef = useRef();
 
   const masterTL = gsap.timeline();
 
@@ -20,18 +21,27 @@ const PortfolioItem = ({ name, date, description, src, url }) => {
       className={styles.box}
       onMouseEnter={() => {
         masterTL
+          .restart()
           .to(firstAnimRef.current, {
-            duration: 0.25,
+            duration: 0.2,
             text: name,
           })
           .to(secondAnimRef.current, {
-            duration: 0.25,
-            text: description,
+            duration: 0.2,
+            text: 'Github Repo',
           })
           .to(thirdAnimRef.current, {
-            duration: 0.5,
+            duration: 0.2,
             text: date,
+          })
+          .to(fourthAnimRef.current, {
+            duration: 0.5,
+
+            text: description,
           });
+      }}
+      onMouseLeave={() => {
+        masterTL.kill();
       }}
     >
       <Image src={src} layout='fill' objectFit='cover' />
@@ -39,8 +49,14 @@ const PortfolioItem = ({ name, date, description, src, url }) => {
         <h4>
           <a href={url} target='_blank' ref={firstAnimRef}></a>
         </h4>
-        <p ref={secondAnimRef}></p>
-        <small ref={thirdAnimRef}></small>
+
+        <h5>
+          <a href={github} target='_blank' ref={secondAnimRef}></a>
+        </h5>
+
+        <small className={styles.rightAlign} ref={thirdAnimRef}></small>
+
+        <p ref={fourthAnimRef}></p>
       </main>
     </div>
   );

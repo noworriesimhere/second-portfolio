@@ -35,6 +35,7 @@ export const projects = [
       `,
     src: '/portfolio-wedding.png',
     url: 'https://wedding-project-f3ecc.web.app/',
+    github: 'https://github.com/noworriesimhere/wedding-site',
     key: 4,
   },
   {
@@ -47,6 +48,7 @@ export const projects = [
     `,
     src: '/portfolio-first.png',
     url: 'https://alantran.netlify.app/',
+    github: 'https://github.com/noworriesimhere/personal-portfolio',
     key: 3,
   },
   {
@@ -59,6 +61,7 @@ export const projects = [
     `,
     src: '/portfolio-baking.png',
     url: 'https://createbakery.netlify.app/',
+    github: 'https://github.com/noworriesimhere/create-bakery',
     key: 2,
   },
   {
@@ -70,6 +73,7 @@ export const projects = [
     `,
     src: '/portfolio-city.png',
     url: 'https://parallaxtemplate.vercel.app/',
+    github: 'https://github.com/noworriesimhere/parallaxtemplate',
     key: 1,
   },
 ];
