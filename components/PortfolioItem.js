@@ -15,7 +15,6 @@ const PortfolioItem = ({ name, date, description, src, url, github }) => {
   const fourthAnimRef = useRef();
 
   const masterTL = gsap.timeline();
-
   return (
     <div
       className={styles.box}

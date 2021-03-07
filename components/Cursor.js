@@ -45,7 +45,7 @@ const Cursor = ({ children }) => {
       onPointerDown={() => {
         gsap.to(cursorRef.current, {
           duration: 0.05,
-          scale: 0.9,
+          scale: 0.85,
         });
       }}
       onPointerUp={() => {
