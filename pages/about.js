@@ -3,6 +3,7 @@ import Head from 'next/head';
 import styles from '../styles/About.module.scss';
 import Image from 'next/image';
 
+import { spanify } from '../utils/utilFunctions';
 import { useNonInitialEffect } from '../hooks/useNonInitialEffect';
 
 import { gsap } from 'gsap/dist/gsap';
@@ -26,12 +27,15 @@ const About = ({ isTransitioning }) => {
     masterTL
       .restart()
       .to(firstCursorRef.current, { duration: 0.1, visibility: 'visible' })
-      .to(firstAnimRef.current, { duration: 0.5, text: 'Web Developer' })
+      .to(firstAnimRef.current, {
+        duration: 0.5,
+        text: spanify('Web Developer'),
+      })
       .to(firstCursorRef.current, { duration: 0.1, visibility: 'hidden' })
       .to(secondCursorRef.current, { duration: 0.1, visibility: 'visible' })
       .to(secondAnimRef.current, {
         duration: 0.75,
-        text: `Self-taught && self-teaching `,
+        text: spanify(`Self-taught && self-teaching `),
       })
       .to(secondCursorRef.current, { duration: 0.1, visibility: 'hidden' })
       .to(thirdCursorRef.current, { duration: 0.1, visibility: 'visible' })

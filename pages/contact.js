@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import React from 'react';
 
+import { spanify } from '../utils/utilFunctions';
+
 const Contact = () => {
   return (
     <>

@@ -4,7 +4,7 @@ import styles from '../styles/Portfolio.module.scss';
 
 import PortfolioItem from '../components/PortfolioItem';
 import { projects } from '../utils/data';
-
+import { spanify } from '../utils/utilFunctions';
 import { useNonInitialEffect } from '../hooks/useNonInitialEffect';
 
 import { gsap } from 'gsap/dist/gsap';
@@ -25,10 +25,13 @@ const Portfolio = ({ isTransitioning }) => {
   useEffect(() => {
     masterTL
       .to(firstCursorRef.current, { duration: 0.1, visibility: 'visible' })
-      .to(firstAnimRef.current, { duration: 1, text: 'Past Projects' });
+      .to(firstAnimRef.current, {
+        duration: 0.5,
+        text: spanify('Past Projects'),
+      });
     portRefs.forEach((item) => {
-      return masterTL.from(item.current, {
-        duration: 0.2,
+      masterTL.from(item.current, {
+        duration: 0.3,
         y: 100,
         opacity: 0,
       });
@@ -38,8 +41,8 @@ const Portfolio = ({ isTransitioning }) => {
   // will fire when page needs to transition
   useNonInitialEffect(() => {
     portRefs.forEach((item) => {
-      return masterTL.to(item.current, {
-        duration: 0.1,
+      masterTL.to(item.current, {
+        duration: 0.2,
         y: 100,
         opacity: 0,
       });
@@ -66,7 +69,7 @@ const Portfolio = ({ isTransitioning }) => {
             const newRef = createRef();
             portRefs.push(newRef);
             return (
-              <div ref={newRef}>
+              <div ref={newRef} key={project.key}>
                 <PortfolioItem
                   name={project.name}
                   date={project.date}
@@ -74,7 +77,6 @@ const Portfolio = ({ isTransitioning }) => {
                   src={project.src}
                   url={project.url}
                   github={project.github}
-                  key={project.key}
                 />
               </div>
             );
