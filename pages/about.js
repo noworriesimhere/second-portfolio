@@ -24,6 +24,7 @@ const About = ({ isTransitioning }) => {
 
   useEffect(() => {
     masterTL
+      .restart()
       .to(firstCursorRef.current, { duration: 0.1, visibility: 'visible' })
       .to(firstAnimRef.current, { duration: 0.5, text: 'Web Developer' })
       .to(firstCursorRef.current, { duration: 0.1, visibility: 'hidden' })
@@ -39,9 +40,9 @@ const About = ({ isTransitioning }) => {
         text: `
         Some technologies that I use: <br /> <br />
         The Front-End Fundamentals: <br /> 
-        HTML / CSS / Javascript <br /> <br />
+        HTML / CSS / SCSS / Bootstrap / Webpack / Javascript<br /> <br />
         The Frameworks: <br />
-        React / NextJS <br /> <br />
+        React / Redux / NextJS <br /> <br />
         The Back-End: <br />
         NodeJS / Express / Mongoose / MongoDB / Firebase <br /> <br />
         ...and still learning!
@@ -60,10 +61,14 @@ const About = ({ isTransitioning }) => {
   // will fire when page needs to transition
   useNonInitialEffect(() => {
     masterTL
-      .to(fourthAnimRef.current, {
-        duration: 0.5,
-        y: 1000,
-      })
+      .to(
+        fourthAnimRef.current,
+        {
+          duration: 0.5,
+          y: 1000,
+        },
+        0
+      )
       .to(thirdAnimRef.current, { duration: 0.25, text: ` ` }, 0)
       .to(thirdCursorRef.current, { duration: 0.1, visibility: 'hidden' })
       .to(secondAnimRef.current, { duration: 0.25, text: ` ` }, 0)

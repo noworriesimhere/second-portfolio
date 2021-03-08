@@ -24,10 +24,30 @@ export default function Home({ isTransitioning }) {
 
   let masterTL = gsap.timeline();
 
+  const spanify = (string) => {
+    let finalString = '';
+    [...string].forEach((letter) => {
+      if (letter === ' ') {
+        finalString += `<span>${letter}</span>`;
+      } else {
+        finalString += `<span class='raiseMe'>${letter}</span>`;
+      }
+    });
+    return finalString;
+  };
+
   useEffect(() => {
     masterTL
       .to(firstCursorRef.current, { duration: 0.2, visibility: 'visible' })
-      .to(firstAnimRef.current, { duration: 0.5, text: 'Hello there!' })
+      .to(firstAnimRef.current, {
+        duration: 0.5,
+        text: 'Hello there!',
+        onComplete: () => {
+          firstAnimRef.current.innerHTML = spanify(
+            firstAnimRef.current.innerHTML
+          );
+        },
+      })
       .to(firstCursorRef.current, { duration: 0.1, visibility: 'hidden' })
       .to(secondCursorRef.current, { duration: 0.1, visibility: 'visible' })
       .to(secondAnimRef.current, { duration: 0.5, text: `I'm Alan, and I ` })

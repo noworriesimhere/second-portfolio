@@ -79,6 +79,15 @@ p {
   opacity: 0;
 }
 
+.raiseMe {
+  display: inline-block;
+  transition: all 0.25s ease;
+  &:hover {
+    color: var(--color-background-dark);
+    transform: translateY(-20px);
+  }
+}
+
 h1,
 h2,
 h3,
