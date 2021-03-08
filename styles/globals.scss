@@ -6,11 +6,11 @@ html {
 }
 
 :root {
-  --color-text: #f1faee;
-  --color-background-dark: #1d3557;
-  --color-background-medium: #457b9d;
+  --color-text: #ffffff;
+  --color-background-dark: #132644; //#1d3557;
+  --color-background-medium: #335c75; //#457b9d old color
   --color-background-light: #a8dadc;
-  --color-accent: #e63946;
+  --color-accent: #eb606c; //#e63946 old color;
   --baseFontSize: 1rem;
 
   --smallFontSize: 0.8rem;
@@ -84,7 +84,7 @@ p {
   transition: color 0.1s ease-in-out, transform 0.3s ease-in-out;
 
   &:hover {
-    color: var(--color-background-dark);
+    color: var(--color-background-light);
     animation: bounce 0.3s;
     transform: scale(1) translateY(-20px) rotate(12deg);
   }
