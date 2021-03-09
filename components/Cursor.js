@@ -32,8 +32,8 @@ const Cursor = ({ children }) => {
         } else {
           gsap.to(cursorRef.current, {
             duration: 0.1,
-            width: '3rem',
-            height: '3rem',
+            width: '5rem',
+            height: '5rem',
             borderRadius: '50%',
             x: e.clientX,
             y: e.clientY,
@@ -44,14 +44,16 @@ const Cursor = ({ children }) => {
       }}
       onPointerDown={() => {
         gsap.to(cursorRef.current, {
-          duration: 0.05,
-          scale: 0.85,
+          duration: 1,
+          scale: 0.8,
+          ease: 'elastic.out(1, 0.3)',
         });
       }}
       onPointerUp={() => {
         gsap.to(cursorRef.current, {
-          duration: 0.05,
+          duration: 1,
           scale: 1,
+          ease: 'elastic.out(1, 0.3)',
         });
       }}
     >
