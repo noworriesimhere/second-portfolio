@@ -12,6 +12,10 @@
   overflow: hidden;
   transition: opacity 0.5s ease;
 
+  a {
+    color: inherit;
+  }
+
   &:hover {
     color: var(--color-background-dark);
     box-shadow: 0 4px var(--color-background-dark);
@@ -19,6 +23,10 @@
 
     img {
       opacity: 0.05;
+    }
+
+    a {
+      color: var(--color-accent);
     }
   }
 

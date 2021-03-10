@@ -53,8 +53,9 @@ body {
 }
 
 a {
-  color: inherit;
+  color: var(--color-accent);
   cursor: none;
+  text-decoration: underline;
 }
 
 * {
@@ -79,17 +80,17 @@ p {
   opacity: 0;
 }
 
-.raiseMe {
+.turnMe {
   display: inline-block;
   transition: color 0.1s ease-in-out, transform 0.3s ease-in-out;
 
   &:hover {
     color: var(--color-accent);
-    animation: bounce 0.3s;
+    animation: bounceRotate 0.3s;
     transform: scale(1) rotate(12deg);
   }
 
-  @keyframes bounce {
+  @keyframes bounceRotate {
     0% {
       transform: scale(1) rotate(0deg);
     }

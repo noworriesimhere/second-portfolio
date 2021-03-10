@@ -4,7 +4,7 @@ export const spanify = (string) => {
     if (letter === ' ') {
       finalString += `<span>${letter}</span>`;
     } else {
-      finalString += `<span class='raiseMe'>${letter}</span>`;
+      finalString += `<span class='turnMe'>${letter}</span>`;
     }
   }
   return finalString;

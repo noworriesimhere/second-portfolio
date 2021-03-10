@@ -77,3 +77,31 @@ export const projects = [
     key: 1,
   },
 ];
+
+export const technologies = [
+  {
+    name: 'HTML',
+    description:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea eos deleniti sit reprehenderit illum mollitia soluta dolorum voluptatem velit id aut voluptatibus accusamus atque ducimus odit quis commodi, consequuntur in?',
+  },
+  {
+    name: 'CSS',
+    description:
+      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui repellendus aliquam ullam provident consequuntur, laudantium magni dolorem debitis sapiente hic eius inventore numquam aut tenetur nostrum ipsum odio voluptates! Autem.',
+  },
+  {
+    name: 'SCSS',
+    description:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi quam omnis molestiae illum? Non pariatur totam ea, perferendis amet iste. Assumenda nemo amet iste nihil rem inventore eos, vero sapiente.',
+  },
+  {
+    name: 'Bootstrap',
+    description:
+      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero perspiciatis possimus repellendus, nihil assumenda sint! Voluptate illum aperiam maxime. Illo magni commodi eum fugit quo ratione. Iusto dicta quod officia?',
+  },
+  {
+    name: 'Webpack',
+    description:
+      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia, cumque deleniti molestias illum voluptates enim quod officiis iure inventore ipsum magnam necessitatibus labore excepturi eveniet maiores non quidem nisi perspiciatis.',
+  },
+];

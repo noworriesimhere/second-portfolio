@@ -1,8 +1,11 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, createRef } from 'react';
 import Head from 'next/head';
-import styles from '../styles/About.module.scss';
 import Image from 'next/image';
+import styles from '../styles/About.module.scss';
 
+import HoverLink from '../components/HoverLink';
+
+import { technologies } from '../utils/data';
 import { spanify } from '../utils/utilFunctions';
 import { useNonInitialEffect } from '../hooks/useNonInitialEffect';
 
@@ -20,6 +23,8 @@ const About = ({ isTransitioning }) => {
   const firstCursorRef = useRef();
   const secondCursorRef = useRef();
   const thirdCursorRef = useRef();
+
+  let techsAnimRefs = [];
 
   const masterTL = gsap.timeline();
 
@@ -40,17 +45,9 @@ const About = ({ isTransitioning }) => {
       .to(secondCursorRef.current, { duration: 0.1, visibility: 'hidden' })
       .to(thirdCursorRef.current, { duration: 0.1, visibility: 'visible' })
       .to(thirdAnimRef.current, {
-        duration: 3,
-        text: `
-        Some technologies that I use: <br /> <br />
-        The Front-End Fundamentals: <br /> 
-        HTML / CSS / SCSS / Bootstrap / Webpack / Javascript<br /> <br />
-        The Frameworks: <br />
-        React / Redux / NextJS <br /> <br />
-        The Back-End: <br />
-        NodeJS / Express / Mongoose / MongoDB / Firebase <br /> <br />
-        ...and still learning!
-        `,
+        duration: 1,
+        text: `My stories with the tech I know (Hover over to learn more!)
+        <br /> <br />`,
       })
       .to(
         fourthAnimRef.current,
@@ -60,6 +57,12 @@ const About = ({ isTransitioning }) => {
         },
         '1.5'
       );
+    techsAnimRefs.forEach((tech, i) => {
+      masterTL.to(tech.current, {
+        duration: 0.25,
+        text: technologies[i].name,
+      });
+    });
   }, []);
 
   // will fire when page needs to transition
@@ -77,6 +80,16 @@ const About = ({ isTransitioning }) => {
       .to(thirdCursorRef.current, { duration: 0.1, visibility: 'hidden' })
       .to(secondAnimRef.current, { duration: 0.25, text: ` ` }, 0)
       .to(firstAnimRef.current, { duration: 0.25, text: ' ' }, 0);
+    techsAnimRefs.forEach((tech) => {
+      masterTL.to(
+        tech.current,
+        {
+          duration: 0.25,
+          text: ' ',
+        },
+        0
+      );
+    });
   }, [isTransitioning]);
   return (
     <>
@@ -100,12 +113,21 @@ const About = ({ isTransitioning }) => {
         </header>
 
         <section className={styles.left}>
-          <p>
+          <div>
             <span ref={thirdAnimRef}></span>
+            {technologies.map((tech, i) => {
+              const newRef = createRef();
+              techsAnimRefs.push(newRef);
+              return (
+                <HoverLink key={i}>
+                  <a ref={newRef} />
+                </HoverLink>
+              );
+            })}
             <span ref={thirdCursorRef} className={styles.cursor}>
               _
             </span>
-          </p>
+          </div>
         </section>
         <figure className={styles.right} ref={fourthAnimRef}>
           <aside className={styles.background} />
