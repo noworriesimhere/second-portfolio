@@ -8,11 +8,12 @@
     'd d c c'
     'd d c c';
   width: 95%;
-  height: 600px;
+  height: 550px;
   overflow: hidden;
 
   header {
     grid-area: a;
+    margin-bottom: 2rem;
 
     h1,
     h3 {
@@ -26,15 +27,19 @@
 }
 
 .right {
-  transform: translateY(1000px);
-
   grid-area: c;
-
+  div {
+    position: relative;
+    height: 100%;
+  }
+  h5 {
+    margin: 0;
+  }
   .portrait {
     z-index: 2;
     position: absolute;
     bottom: 0;
-    right: 0;
+    left: 0;
     border-bottom-left-radius: 125px;
     border-bottom-right-radius: 125px;
     overflow-y: hidden;
@@ -58,7 +63,7 @@
     transition: transform 0.25s ease-in-out;
     position: absolute;
     bottom: 0;
-    right: 0;
+    left: 0;
     z-index: 2;
     height: 250px;
     width: 250px;

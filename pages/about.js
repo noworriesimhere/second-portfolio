@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, createRef } from 'react';
+import React, { useRef, useEffect, createRef, useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/About.module.scss';
@@ -16,10 +16,13 @@ import { TextPlugin } from 'gsap/dist/TextPlugin';
 gsap.registerPlugin(TextPlugin, RoughEase);
 
 const About = ({ isTransitioning }) => {
+  const [currentTech, setCurrentTech] = useState(undefined);
+
   const firstAnimRef = useRef();
   const secondAnimRef = useRef();
   const thirdAnimRef = useRef();
   const fourthAnimRef = useRef();
+
   const firstCursorRef = useRef();
   const secondCursorRef = useRef();
   const thirdCursorRef = useRef();
@@ -30,7 +33,6 @@ const About = ({ isTransitioning }) => {
 
   useEffect(() => {
     masterTL
-      .restart()
       .to(firstCursorRef.current, { duration: 0.1, visibility: 'visible' })
       .to(firstAnimRef.current, {
         duration: 0.5,
@@ -40,23 +42,11 @@ const About = ({ isTransitioning }) => {
       .to(secondCursorRef.current, { duration: 0.1, visibility: 'visible' })
       .to(secondAnimRef.current, {
         duration: 0.75,
-        text: spanify(`Self-taught && self-teaching `),
+        text: spanify(`Self-taught && self-teaching`),
       })
       .to(secondCursorRef.current, { duration: 0.1, visibility: 'hidden' })
-      .to(thirdCursorRef.current, { duration: 0.1, visibility: 'visible' })
-      .to(thirdAnimRef.current, {
-        duration: 1,
-        text: `My stories with the tech I know (Hover over to learn more!)
-        <br /> <br />`,
-      })
-      .to(
-        fourthAnimRef.current,
-        {
-          duration: 1,
-          y: 0,
-        },
-        '1.5'
-      );
+      .to(thirdCursorRef.current, { duration: 0.1, visibility: 'visible' });
+
     techsAnimRefs.forEach((tech, i) => {
       masterTL.to(tech.current, {
         duration: 0.25,
@@ -64,6 +54,49 @@ const About = ({ isTransitioning }) => {
       });
     });
   }, []);
+
+  useEffect(() => {
+    console.log(technologies[0].description);
+    if (!currentTech) {
+      masterTL
+        .fromTo(
+          fourthAnimRef.current,
+          { y: 500 },
+          {
+            duration: 0.75,
+            y: 0,
+          },
+          0
+        )
+        .to(
+          thirdAnimRef.current,
+          {
+            duration: 0.75,
+            text: ' ',
+          },
+          0
+        );
+    } else {
+      masterTL
+        .to(
+          fourthAnimRef.current,
+          {
+            duration: 0.75,
+            y: 500,
+          },
+          0
+        )
+        .to(
+          thirdAnimRef.current,
+          {
+            duration: 0.75,
+            text: technologies.find((tech) => tech.name === currentTech)
+              .description,
+          },
+          0
+        );
+    }
+  }, [currentTech]);
 
   // will fire when page needs to transition
   useNonInitialEffect(() => {
@@ -76,7 +109,6 @@ const About = ({ isTransitioning }) => {
         },
         0
       )
-      .to(thirdAnimRef.current, { duration: 0.25, text: ` ` }, 0)
       .to(thirdCursorRef.current, { duration: 0.1, visibility: 'hidden' })
       .to(secondAnimRef.current, { duration: 0.25, text: ` ` }, 0)
       .to(firstAnimRef.current, { duration: 0.25, text: ' ' }, 0);
@@ -114,13 +146,20 @@ const About = ({ isTransitioning }) => {
 
         <section className={styles.left}>
           <div>
-            <span ref={thirdAnimRef}></span>
             {technologies.map((tech, i) => {
               const newRef = createRef();
               techsAnimRefs.push(newRef);
               return (
                 <HoverLink key={i}>
-                  <a ref={newRef} />
+                  <a
+                    ref={newRef}
+                    onMouseEnter={(e) => {
+                      setCurrentTech(e.target.innerHTML);
+                    }}
+                    onMouseLeave={() => {
+                      setCurrentTech(undefined);
+                    }}
+                  />
                 </HoverLink>
               );
             })}
@@ -129,19 +168,25 @@ const About = ({ isTransitioning }) => {
             </span>
           </div>
         </section>
-        <figure className={styles.right} ref={fourthAnimRef}>
-          <aside className={styles.background} />
-          <aside className={styles.portrait}>
-            <Image
-              src='/portrait.png'
-              alt='Portrait of me'
-              width={291}
-              height={426}
-              priority
-              className={styles.img}
-            />
-          </aside>
-        </figure>
+
+        <section className={styles.right}>
+          <span>
+            <h5 ref={thirdAnimRef}></h5>
+          </span>
+          <div ref={fourthAnimRef}>
+            <aside className={styles.background} />
+            <aside className={styles.portrait}>
+              <Image
+                src='/portrait.png'
+                alt='Portrait of me'
+                width={291}
+                height={426}
+                priority
+                className={styles.img}
+              />
+            </aside>
+          </div>
+        </section>
       </main>
     </>
   );

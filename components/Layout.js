@@ -52,7 +52,7 @@ const Layout = ({ children, setIsTransitioning, isTransitioning }) => {
   //Moves the red highlight bar to where it needs to hover over
   useEffect(() => {
     gsap.to(highlightRef.current, { duration: 0.5, y: offsetTop });
-  }, [offsetTop]);
+  }, [offsetTop, width, height]);
 
   const changePage = (e, destination) => {
     e.preventDefault();

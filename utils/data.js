@@ -80,28 +80,23 @@ export const projects = [
 
 export const technologies = [
   {
-    name: 'HTML',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea eos deleniti sit reprehenderit illum mollitia soluta dolorum voluptatem velit id aut voluptatibus accusamus atque ducimus odit quis commodi, consequuntur in?',
+    name: 'HTML / CSS / Bootstrap / Javascript',
+    description: `Shortly after the pandemic started, I started learning the basics of the web with Colt Steele's Udemy course on Web Development. <br/> <br/>I learned the basics of the web, as well as how the front end worked together with HTML, CSS, and Javascript. His course also showed me how to leverage Bootstrap for quick projects.`,
   },
   {
-    name: 'CSS',
-    description:
-      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui repellendus aliquam ullam provident consequuntur, laudantium magni dolorem debitis sapiente hic eius inventore numquam aut tenetur nostrum ipsum odio voluptates! Autem.',
+    name: 'Node.js / Express / Mongoose / MongoDB',
+    description: `In the same Colt Steel course, I learned to put together a simple app with a REST API. <br/> <br/> I also learned how to serve web pages with Express using EJS to render the content, while fetching the data from a non-relational database. <br /> <br /> I didn't include that course project in my portfolio, since it wasn't actually my code.`,
   },
   {
-    name: 'SCSS',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi quam omnis molestiae illum? Non pariatur totam ea, perferendis amet iste. Assumenda nemo amet iste nihil rem inventore eos, vero sapiente.',
+    name: 'Git / Webpack / SCSS / BEM ',
+    description: `I took another Udemy course by Brad Schiff that explored the general workflow of a developer. <br /> <br /> It taught me how to configure Webpack, use SCSS(with PostCSS), and BEM methodology to simplify the work, as well as to organize my code. <br /> <br /> It also taught me the value of version control.`,
   },
   {
-    name: 'Bootstrap',
-    description:
-      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero perspiciatis possimus repellendus, nihil assumenda sint! Voluptate illum aperiam maxime. Illo magni commodi eum fugit quo ratione. Iusto dicta quod officia?',
+    name: 'React / Redux / Firebase',
+    description: `Andrei Neagoie's Udemy course taught me the basics of React, Redux, and Firebase. <br/> <br/> After dealing with Node/Express/Mongoose/MongoDB, learning Firebase was a dream! <br /> <br /> I also learned to leverage Context API and Redux Saga for future applications.`,
   },
   {
-    name: 'Webpack',
-    description:
-      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia, cumque deleniti molestias illum voluptates enim quod officiis iure inventore ipsum magnam necessitatibus labore excepturi eveniet maiores non quidem nisi perspiciatis.',
+    name: 'Next.js',
+    description: `This year I've been hearing a lot about Gatsby and Next as tools for React development. <br/><br/>I used Brad Traversy and Net Ninja's YouTube series on Next.js to learn the basic. <br/><br/>This portfolio is built in Next.js and hosted on Vercel.`,
   },
 ];
