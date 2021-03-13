@@ -1,0 +1,27 @@
+.btn {
+  justify-self: flex-end;
+  outline: none;
+  border: none;
+  cursor: none;
+  display: block;
+  position: relative;
+  background-color: var(--color-background-light);
+  font-size: var(--baseNavSize);
+  font-family: 'Nunito', sans-serif;
+  color: var(--color-background-dark);
+  padding: 25px 80px;
+  transform: translateY(200px);
+  border-radius: 15px;
+  box-shadow: 0 5px var(--color-background-dark);
+  margin: 1rem 0;
+}
+
+.btn:hover {
+  box-shadow: 0 4px var(--color-background-dark);
+  top: 1px;
+}
+
+.btn:active {
+  box-shadow: none;
+  top: 5px;
+}

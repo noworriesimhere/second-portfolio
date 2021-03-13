@@ -16,7 +16,12 @@ const Cursor = ({ children }) => {
         //cursor will disappear when moving away from window
       }}
       onPointerMove={(e) => {
-        if (e.target.localName === 'li' || e.target.localName === 'a') {
+        if (
+          e.target.localName === 'li' ||
+          e.target.localName === 'a' ||
+          e.target.localName === 'input' ||
+          e.target.localName === 'textarea'
+        ) {
           const location = e.target.getBoundingClientRect();
           gsap.to(cursorRef.current, {
             duration: 0.15,

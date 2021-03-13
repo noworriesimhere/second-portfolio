@@ -102,8 +102,14 @@ const ContactForm = () => {
           onChange={handleOnChange}
           required
           value={inputs.message}
+          rows='5'
+          cols='70'
         />
-        <button type='submit' disabled={status.submitting}>
+        <button
+          className={styles.btn}
+          type='submit'
+          disabled={status.submitting}
+        >
           {!status.submitting
             ? !status.submitted
               ? 'Submit'
