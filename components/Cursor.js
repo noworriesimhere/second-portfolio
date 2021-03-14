@@ -16,12 +16,7 @@ const Cursor = ({ children }) => {
         //cursor will disappear when moving away from window
       }}
       onPointerMove={(e) => {
-        if (
-          e.target.localName === 'li' ||
-          e.target.localName === 'a' ||
-          e.target.localName === 'input' ||
-          e.target.localName === 'textarea'
-        ) {
+        if (e.target.localName === 'li' || e.target.localName === 'a') {
           const location = e.target.getBoundingClientRect();
           gsap.to(cursorRef.current, {
             duration: 0.15,
@@ -31,6 +26,22 @@ const Cursor = ({ children }) => {
             height: location.height,
 
             borderRadius: '5px',
+            background: 'white',
+            opacity: 1,
+          });
+        } else if (
+          e.target.localName === 'input' ||
+          e.target.localName === 'textarea'
+        ) {
+          const location = e.target.getBoundingClientRect();
+          gsap.to(cursorRef.current, {
+            duration: 0.15,
+            x: location.left + location.width / 2, //centers the hover horizontally
+            y: location.top + location.height / 2, //centers the center vertically over menu item
+            width: location.width + 20, //just a tad more width to the box
+            height: location.height + 20,
+
+            borderRadius: '20px',
             background: 'white',
             opacity: 1,
           });

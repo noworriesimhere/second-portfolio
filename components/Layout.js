@@ -26,7 +26,7 @@ const Layout = ({ children, setIsTransitioning, isTransitioning }) => {
 
   useEffect(() => {
     setHomeOffset(homeRef.current.offsetTop);
-    gsap.to(navRef.current, { duration: 1, x: 0 }, 1);
+    gsap.to(navRef.current, { duration: 1, x: 0 }, 0.5);
     setTrigger(true);
   }, [width, height]);
 

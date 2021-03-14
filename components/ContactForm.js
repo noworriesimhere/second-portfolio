@@ -66,7 +66,6 @@ const ContactForm = () => {
   };
   return (
     <main className={styles.container}>
-      <hr />
       <form onSubmit={handleOnSubmit}>
         <label htmlFor='name'>Name</label>
         <input
@@ -103,7 +102,7 @@ const ContactForm = () => {
           required
           value={inputs.message}
           rows='5'
-          cols='70'
+          cols='25'
         />
         <button
           className={styles.btn}
