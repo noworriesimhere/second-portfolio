@@ -12,6 +12,10 @@
   align-items: center;
   grid-column: 1 / 2;
   grid-row: 1 / 2;
+
+  @media screen and (max-width: 620px) {
+    grid-column: 1 / 3;
+  }
 }
 
 .nav {
@@ -21,7 +25,16 @@
   grid-column: 2 / 3;
   grid-row: 1 / 2;
   background-color: var(--color-background-dark);
-  transform: translateX(1000px);
+  transform: translateX(500px);
+
+  @media screen and (max-width: 620px) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+  }
 
   ul {
     list-style-type: none;

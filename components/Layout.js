@@ -4,6 +4,8 @@ import { useRouter } from 'next/router';
 
 import { useResizeDetector } from 'react-resize-detector';
 
+import Burger from './Burger';
+
 import { gsap } from 'gsap/dist/gsap';
 import { RoughEase } from 'gsap/dist/EasePack';
 import { TextPlugin } from 'gsap/dist/TextPlugin';
@@ -14,6 +16,7 @@ const Layout = ({ children, setIsTransitioning, isTransitioning }) => {
   const [offsetTop, setOffsetTop] = useState(0);
   const [homeOffset, setHomeOffset] = useState(0);
   const [trigger, setTrigger] = useState(false);
+  const [hamburger, setHamburger] = useState(false);
 
   const navRef = useRef();
   const homeRef = useRef();
@@ -26,9 +29,15 @@ const Layout = ({ children, setIsTransitioning, isTransitioning }) => {
 
   useEffect(() => {
     setHomeOffset(homeRef.current.offsetTop);
-    gsap.to(navRef.current, { duration: 1, x: 0 }, 0.5);
+    if (width > 620) {
+      gsap.to(navRef.current, { duration: 1, x: 0 }, 0.5);
+    } else if (hamburger) {
+      gsap.to(navRef.current, { duration: 0.25, x: 0 });
+    } else {
+      gsap.to(navRef.current, { duration: 0.25, x: 620 });
+    }
     setTrigger(true);
-  }, [width, height]);
+  }, [width, height, hamburger]);
 
   useEffect(() => {
     let menuHeight = homeRef.current.clientHeight;
@@ -145,6 +154,7 @@ const Layout = ({ children, setIsTransitioning, isTransitioning }) => {
           </ul>
         </nav>
         <main className={styles.main}>{children}</main>
+        <Burger setHamburger={setHamburger} hamburger={hamburger} />
       </div>
     </>
   );
