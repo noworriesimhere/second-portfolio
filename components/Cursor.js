@@ -9,13 +9,14 @@ const Cursor = ({ children }) => {
   return (
     <div
       ref={linksRef}
-      onPointerLeave={() => {
+      onPointerLeave={(e) => {
         gsap.to(cursorRef.current, {
           opacity: 0,
         });
+
         //cursor will disappear when moving away from window
       }}
-      onPointerMove={(e) => {
+      onMouseMove={(e) => {
         if (e.target.localName === 'li' || e.target.localName === 'a') {
           const location = e.target.getBoundingClientRect();
           gsap.to(cursorRef.current, {

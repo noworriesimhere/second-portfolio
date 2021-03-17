@@ -88,7 +88,11 @@ const Layout = ({ children, setIsTransitioning, isTransitioning }) => {
     <>
       <div className={styles.container} ref={ref}>
         <nav className={styles.nav} ref={navRef}>
-          <ul>
+          <ul
+            onClick={() => {
+              setHamburger(false);
+            }}
+          >
             <div
               className={styles.highlight}
               ref={highlightRef}
