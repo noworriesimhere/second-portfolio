@@ -16,7 +16,7 @@ const Cursor = ({ children }) => {
 
         //cursor will disappear when moving away from window
       }}
-      onMouseMove={(e) => {
+      onPointerMove={(e) => {
         if (e.target.localName === 'li' || e.target.localName === 'a') {
           const location = e.target.getBoundingClientRect();
           gsap.to(cursorRef.current, {

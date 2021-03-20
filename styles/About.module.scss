@@ -11,10 +11,21 @@
   height: 550px;
   overflow: hidden;
 
+  @media screen and (max-width: 620px) {
+    grid-template-areas:
+      'a a a a'
+      'd d d d'
+      'd d d d'
+      'c c c c';
+  }
+
   header {
     grid-area: a;
     margin-bottom: 2rem;
 
+    @media screen and (max-width: 620px) {
+      margin-bottom: 0;
+    }
     h1,
     h3 {
       margin: 0;

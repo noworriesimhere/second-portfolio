@@ -7,6 +7,10 @@
   width: 95%;
   height: 700px;
   overflow: hidden;
+
+  @media screen and (max-width: 620px) {
+    justify-content: flex-start;
+  }
   h1,
   h4 {
     margin: 0;

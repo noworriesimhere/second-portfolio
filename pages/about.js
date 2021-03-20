@@ -56,7 +56,6 @@ const About = ({ isTransitioning }) => {
   }, []);
 
   useEffect(() => {
-    console.log(technologies[0].description);
     if (!currentTech) {
       masterTL
         .fromTo(

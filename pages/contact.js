@@ -60,7 +60,7 @@ const Contact = ({ isTransitioning }) => {
       <Head>
         <title>Contact Me</title>
       </Head>
-      <div div className={styles.container}>
+      <div className={styles.container}>
         <h1>
           <span ref={firstAnimRef}></span>
           <span ref={firstCursorRef} className={styles.cursor}>
