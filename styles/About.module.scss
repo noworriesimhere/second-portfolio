@@ -46,6 +46,11 @@
   h5 {
     margin: 0;
   }
+
+  caption {
+    opacity: 0;
+    transition: all 0.75s ease;
+  }
   .portrait {
     z-index: 2;
     position: absolute;
@@ -94,6 +99,9 @@
     }
     .background {
       transform: scale(1.1);
+    }
+    caption {
+      opacity: 1;
     }
   }
 }

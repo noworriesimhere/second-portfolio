@@ -36,13 +36,13 @@ const About = ({ isTransitioning }) => {
       .to(firstCursorRef.current, { duration: 0.1, visibility: 'visible' })
       .to(firstAnimRef.current, {
         duration: 0.5,
-        text: spanify('Web Developer'),
+        text: spanify('Self Teaching Developer'),
       })
       .to(firstCursorRef.current, { duration: 0.1, visibility: 'hidden' })
       .to(secondCursorRef.current, { duration: 0.1, visibility: 'visible' })
       .to(secondAnimRef.current, {
         duration: 0.75,
-        text: spanify(`Self-taught && self-teaching`),
+        text: spanify(`My skills and how I learned them`),
       })
       .to(secondCursorRef.current, { duration: 0.1, visibility: 'hidden' })
       .to(thirdCursorRef.current, { duration: 0.1, visibility: 'visible' });
@@ -184,6 +184,7 @@ const About = ({ isTransitioning }) => {
                 className={styles.img}
               />
             </aside>
+            <caption>Available to work!</caption>
           </div>
         </section>
       </main>

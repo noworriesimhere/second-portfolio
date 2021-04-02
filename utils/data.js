@@ -97,6 +97,6 @@ export const technologies = [
   },
   {
     name: 'Next.js',
-    description: `This year I've been hearing a lot about Gatsby and Next as tools for React development. <br/><br/>I used Brad Traversy and Net Ninja's YouTube series on Next.js to learn the basic. <br/><br/>This portfolio is built in Next.js and hosted on Vercel.`,
+    description: `This year I've been hearing a lot about Gatsby and Next as tools for React development. <br/><br/>I used Brad Traversy and Net Ninja's YouTube series on Next.js to learn the basics <br/><br/>This portfolio is built in Next.js and hosted on Vercel.`,
   },
 ];
