@@ -35,8 +35,8 @@ const Contact = ({ isTransitioning }) => {
       .to(secondAnimRef.current, {
         duration: 0.5,
         text:
-          `<a href='tel:6467255620'>Call me</a>, <a href='mailto: contact@alantran.tech'>email me</a>` +
-          spanify(`, or please fill out below`),
+          `<a href='tel:(845) 243-0096'>Call me</a>, <a href='mailto: contact@alantran.tech'>email me</a>, <br/>` +
+          spanify(`or please fill out below!`),
       })
       .from(thirdAnimRef.current, { duration: 0.5, opacity: 0, y: 300 }, 0.5);
   }, []);

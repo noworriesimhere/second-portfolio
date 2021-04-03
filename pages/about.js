@@ -9,6 +9,8 @@ import { technologies } from '../utils/data';
 import { spanify } from '../utils/utilFunctions';
 import { useNonInitialEffect } from '../hooks/useNonInitialEffect';
 
+import { useResizeDetector } from 'react-resize-detector';
+
 import { gsap } from 'gsap/dist/gsap';
 import { RoughEase } from 'gsap/dist/EasePack';
 import { TextPlugin } from 'gsap/dist/TextPlugin';
@@ -17,6 +19,8 @@ gsap.registerPlugin(TextPlugin, RoughEase);
 
 const About = ({ isTransitioning }) => {
   const [currentTech, setCurrentTech] = useState(undefined);
+  const [title, setTitle] = useState('');
+  const [subtitle, setSubTitle] = useState('');
 
   const firstAnimRef = useRef();
   const secondAnimRef = useRef();
@@ -31,18 +35,31 @@ const About = ({ isTransitioning }) => {
 
   const masterTL = gsap.timeline();
 
+  const { width, ref } = useResizeDetector();
+
   useEffect(() => {
+    if (width > 1180) {
+      setTitle('Self Teaching Developer');
+      setSubTitle('My skills and how I learned them');
+    } else {
+      setTitle('Web Developer');
+      setSubTitle('Some self taught skills');
+    }
+    console.log(width);
+  }, [width]);
+
+  useNonInitialEffect(() => {
     masterTL
       .to(firstCursorRef.current, { duration: 0.1, visibility: 'visible' })
       .to(firstAnimRef.current, {
         duration: 0.5,
-        text: spanify('Self Teaching Developer'),
+        text: spanify(title),
       })
       .to(firstCursorRef.current, { duration: 0.1, visibility: 'hidden' })
       .to(secondCursorRef.current, { duration: 0.1, visibility: 'visible' })
       .to(secondAnimRef.current, {
         duration: 0.75,
-        text: spanify(`My skills and how I learned them`),
+        text: spanify(subtitle),
       })
       .to(secondCursorRef.current, { duration: 0.1, visibility: 'hidden' })
       .to(thirdCursorRef.current, { duration: 0.1, visibility: 'visible' });
@@ -53,7 +70,7 @@ const About = ({ isTransitioning }) => {
         text: technologies[i].name,
       });
     });
-  }, []);
+  }, [title, subtitle]);
 
   useEffect(() => {
     if (!currentTech) {
@@ -98,7 +115,7 @@ const About = ({ isTransitioning }) => {
   }, [currentTech]);
 
   // will fire when page needs to transition
-  useNonInitialEffect(() => {
+  useEffect(() => {
     masterTL
       .to(
         fourthAnimRef.current,
@@ -122,12 +139,13 @@ const About = ({ isTransitioning }) => {
       );
     });
   }, [isTransitioning]);
+
   return (
     <>
       <Head>
         <title>About Me - Alan Tran</title>
       </Head>
-      <main className={styles.container}>
+      <main className={styles.container} ref={ref}>
         <header>
           <h1>
             <span ref={firstAnimRef}></span>
@@ -184,7 +202,7 @@ const About = ({ isTransitioning }) => {
                 className={styles.img}
               />
             </aside>
-            <caption>Available to work!</caption>
+            <p>Available to work!</p>
           </div>
         </section>
       </main>

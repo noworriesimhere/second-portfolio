@@ -8,6 +8,10 @@
   height: 400px;
   overflow: hidden;
 
+  @media screen and (max-width: 620px) {
+    height: 90vh;
+  }
+
   h1,
   h3 {
     margin: 0;

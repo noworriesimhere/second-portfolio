@@ -4,11 +4,13 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+  margin-top: 1rem;
+
   input {
     cursor: none;
     width: 100%;
     height: 2rem;
-    margin: 0.75rem 0;
+    margin-bottom: 0.5rem;
     padding: 1rem;
     border-radius: 20px;
     border-style: none;
@@ -18,7 +20,7 @@
   textarea {
     cursor: none;
     height: 5rem;
-    margin: 0.75rem 0;
+    margin-bottom: 0.5rem;
     border-radius: 20px;
     border-style: none;
     resize: none;

@@ -40,7 +40,7 @@ export default function Home({ isTransitioning }) {
       })
       .to(messageRef.current, {
         duration: 0.5,
-        text: spanify(`${message}`),
+        text: message,
       })
       .to(buttonRef.current, { duration: 1, y: 0 }, '-=1.5');
   }, []);
@@ -54,7 +54,7 @@ export default function Home({ isTransitioning }) {
       })
       .to(messageRef.current, {
         duration: 0.75,
-        text: spanify(`${message}`),
+        text: message,
       });
   }, [message]);
 
@@ -84,21 +84,20 @@ export default function Home({ isTransitioning }) {
         <title>Portfolio - Alan Tran</title>
       </Head>
       <div className={styles.container}>
-        <header>
-          <h1 className={styles.hero}>
-            <span ref={firstAnimRef}></span>
-            <span ref={firstCursorRef} className={styles.cursor}>
-              _
-            </span>
-          </h1>
-          <h3>
-            <span ref={secondAnimRef}></span>
-            <span ref={messageRef}></span>
-            <span ref={secondCursorRef} className={styles.cursor}>
-              _
-            </span>
-          </h3>
-        </header>
+        <h1 className={styles.hero}>
+          <span ref={firstAnimRef}></span>
+          <span ref={firstCursorRef} className={styles.cursor}>
+            _
+          </span>
+        </h1>
+        <h3>
+          <span ref={secondAnimRef}></span>
+          <span ref={messageRef}></span>
+          <span ref={secondCursorRef} className={styles.cursor}>
+            _
+          </span>
+        </h3>
+
         <button
           ref={buttonRef}
           className={styles.btn}
