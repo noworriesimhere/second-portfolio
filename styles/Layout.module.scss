@@ -1,6 +1,6 @@
 .container {
   width: 100vw;
-  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   display: grid;
   grid-template-columns: 4fr 1fr;
   background-color: var(--color-background-medium);
@@ -27,10 +27,9 @@
   grid-column: 2 / 3;
   grid-row: 1 / 2;
   background-color: var(--color-background-dark);
-  transform: translateX(620px);
 
   @media screen and (max-width: 620px) {
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     width: 100%;

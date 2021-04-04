@@ -9,7 +9,11 @@
   overflow: hidden;
 
   @media screen and (max-width: 620px) {
-    height: 90vh;
+    height: 80vh;
+
+    h3 {
+      padding-top: calc(var(--vh, 1vh) * 25);
+    }
   }
 
   h1,

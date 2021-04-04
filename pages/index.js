@@ -84,19 +84,21 @@ export default function Home({ isTransitioning }) {
         <title>Portfolio - Alan Tran</title>
       </Head>
       <div className={styles.container}>
-        <h1 className={styles.hero}>
-          <span ref={firstAnimRef}></span>
-          <span ref={firstCursorRef} className={styles.cursor}>
-            _
-          </span>
-        </h1>
-        <h3>
-          <span ref={secondAnimRef}></span>
-          <span ref={messageRef}></span>
-          <span ref={secondCursorRef} className={styles.cursor}>
-            _
-          </span>
-        </h3>
+        <main>
+          <h1 className={styles.hero}>
+            <span ref={firstAnimRef}></span>
+            <span ref={firstCursorRef} className={styles.cursor}>
+              _
+            </span>
+          </h1>
+          <h3>
+            <span ref={secondAnimRef}></span>
+            <span ref={messageRef}></span>
+            <span ref={secondCursorRef} className={styles.cursor}>
+              _
+            </span>
+          </h3>
+        </main>
 
         <button
           ref={buttonRef}
