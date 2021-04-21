@@ -64,7 +64,6 @@ const ContactForm = () => {
         handleServerResponse(false, error.response.data.error);
       });
   };
-  console.log(status);
 
   return (
     <main className={styles.container}>

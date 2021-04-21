@@ -45,7 +45,6 @@ const About = ({ isTransitioning }) => {
       setTitle('Web Developer');
       setSubTitle('Some self taught skills');
     }
-    console.log(width);
   }, [width]);
 
   useNonInitialEffect(() => {
@@ -106,7 +105,7 @@ const About = ({ isTransitioning }) => {
           thirdAnimRef.current,
           {
             duration: 0.75,
-            text: technologies.find((tech) => tech.name === currentTech)
+            text: technologies.find((tech) => tech.name.includes(currentTech))
               .description,
           },
           0
