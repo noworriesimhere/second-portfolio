@@ -81,22 +81,26 @@ export const projects = [
 export const technologies = [
   {
     name: 'HTML / CSS / Bootstrap / Javascript',
-    description: `Shortly after the pandemic started, I started learning the basics of the web with Colt Steele's Udemy course on Web Development. <br/> <br/>I learned the basics of the web, as well as how the front end worked together with HTML, CSS, and Javascript. His course also showed me how to leverage Bootstrap for quick projects.`,
+    description: `In spring of 2020, with a bit of extra time on my hands, I started learning code. <br/> <br/>I learned the basics of the web, as well as how the front end worked together with HTML, CSS, and Javascript. One course I took on Udemy also showed me how to leverage Bootstrap for quick projects.`,
   },
   {
     name: 'Node.js / Express / Mongoose / MongoDB',
-    description: `In the same Colt Steel course, I learned to put together a simple app with a REST API. <br/> <br/> I also learned how to serve web pages with Express using EJS to render the content, while fetching the data from a non-relational database. <br /> <br /> I didn't include that course project in my portfolio, since it wasn't actually my code.`,
+    description: `After understanding the basics of front end code, I started to explore how I could use the same Javascript for the back end. <br /> <br /> I learned to put together a simple app with a REST API. <br/> <br/> I also learned how to serve web pages with Express using EJS to render the content, while fetching the data from a non-relational database. <br /> <br />`,
   },
   {
     name: 'Git / Webpack / SCSS / BEM ',
-    description: `I took another Udemy course by Brad Schiff that explored the general workflow of a developer. <br /> <br /> It taught me how to configure Webpack, use SCSS(with PostCSS), and BEM methodology to simplify the work, as well as to organize my code. <br /> <br /> It also taught me the value of version control.`,
+    description: `After understanding a bit of how the back end works, I started learning about workflows and automated tools. <br /> <br /> I started to use version control, file bundling, CSS pre-processors, and organized CSS classes to optimize my workflow`,
   },
   {
     name: 'React / Redux / Firebase',
-    description: `Andrei Neagoie's Udemy course taught me the basics of React, Redux, and Firebase. <br/> <br/> After dealing with Node/Express/Mongoose/MongoDB, learning Firebase was a dream! <br /> <br /> I also learned to leverage Context API and Redux Saga for future applications.`,
+    description: `After dealing with manual configs for Webpack, and server configs for Node and Express, diving into React and Firebase was a dream! <br /> <br /> Around this time I familiarized myself with Redux, althought personally I've been using the Context API for state management`,
   },
   {
     name: 'Next.js',
-    description: `This year I've been hearing a lot about Gatsby and Next as tools for React development. <br/><br/>I used Brad Traversy and Net Ninja's YouTube series on Next.js to learn the basics <br/><br/>This portfolio is built in Next.js and hosted on Vercel.`,
+    description: `This year I've been hearing a lot about Gatsby and Next.js as tools for React development. <br/><br/>I began to learn the basics of Next.js and Static Site Generation. <br/><br/>This portfolio is built in Next.js and hosted on Vercel.`,
+  },
+  {
+    name: 'PHP / Wordpress / Elementor',
+    description: `Despite being an older language, PHP and Wordpress still make up the majority of the web. <br/><br/> Having learned Javascript made learning PHP fairly easy. <br/><br/> I took what I learned to set up an ecommerce shop with Wordpress, Woocommerce, and Elementor.`,
   },
 ];
