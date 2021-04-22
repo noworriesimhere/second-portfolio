@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useLayoutEffect, useEffect } from 'react';
 import styles from '../styles/Layout.module.scss';
 import { useRouter } from 'next/router';
 
@@ -35,7 +35,6 @@ const Layout = ({ children, setIsTransitioning, isTransitioning }) => {
   });
 
   useEffect(() => {
-    setHomeOffset(homeRef.current.offsetTop);
     if (width > 620) {
       gsap.to(navRef.current, { duration: 1, x: 0 }, 0.5);
     } else if (hamburger) {
@@ -43,6 +42,11 @@ const Layout = ({ children, setIsTransitioning, isTransitioning }) => {
     } else {
       gsap.to(navRef.current, { duration: 0.25, x: 620 });
     }
+    //lock in that "Home" li location even if after font swap
+    setHomeOffset(homeRef.current.offsetTop);
+    document.fonts.onloadingdone = () => {
+      setHomeOffset(homeRef.current.offsetTop);
+    };
     setTrigger(true);
   }, [width, height, hamburger]);
 
@@ -63,7 +67,7 @@ const Layout = ({ children, setIsTransitioning, isTransitioning }) => {
         trigger && setOffsetTop(homeOffset + menuHeight * 3);
         break;
     }
-  }, [homeRef, name, trigger, width, height]);
+  }, [homeRef, name, trigger, width, height, homeOffset]);
 
   //Moves the red highlight bar to where it needs to hover over
   useEffect(() => {
