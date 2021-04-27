@@ -30,11 +30,19 @@ const Portfolio = ({ isTransitioning }) => {
         text: spanify('Past Projects'),
       });
     portRefs.forEach((item) => {
-      masterTL.from(item.current, {
-        duration: 0.3,
-        y: 100,
-        opacity: 0,
-      });
+      masterTL.fromTo(
+        item.current,
+        {
+          y: 100,
+          opacity: 0,
+        },
+        {
+          duration: 0.4,
+          y: 0,
+          opacity: 1,
+          visibility: 'visible',
+        }
+      );
     });
   }, []);
 
@@ -69,7 +77,11 @@ const Portfolio = ({ isTransitioning }) => {
             const newRef = createRef();
             portRefs.push(newRef);
             return (
-              <div ref={newRef} key={project.key}>
+              <div
+                ref={newRef}
+                key={project.key}
+                className={styles.portContainer}
+              >
                 <PortfolioItem
                   name={project.name}
                   date={project.date}

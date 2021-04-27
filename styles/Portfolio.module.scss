@@ -10,6 +10,10 @@
   }
 }
 
+.portContainer {
+  visibility: hidden;
+}
+
 .flex {
   display: flex;
   flex-flow: row wrap;
