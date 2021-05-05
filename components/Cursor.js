@@ -9,7 +9,7 @@ const Cursor = ({ children }) => {
   return (
     <div
       ref={linksRef}
-      onPointerLeave={(e) => {
+      onPointerOut={(e) => {
         gsap.to(cursorRef.current, {
           opacity: 0,
         });

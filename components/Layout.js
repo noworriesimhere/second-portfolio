@@ -66,7 +66,11 @@ const Layout = ({ children, setIsTransitioning, isTransitioning }) => {
       case '/contact':
         trigger && setOffsetTop(homeOffset + menuHeight * 3);
         break;
+      case '/resume':
+        trigger && setOffsetTop(homeOffset + menuHeight * 4);
+        break;
     }
+    console.log(homeOffset);
   }, [homeRef, name, trigger, width, height, homeOffset]);
 
   //Moves the red highlight bar to where it needs to hover over

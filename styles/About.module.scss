@@ -33,7 +33,8 @@
     grid-area: d;
     @media screen and (max-width: 620px) {
       margin-top: 3rem;
-
+    }
+    @media (hover: none) {
       a:hover {
         color: white;
         background-color: var(--color-background-dark);
