@@ -72,7 +72,7 @@ const Resume = ({ isTransitioning }) => {
             </span>
         </h1>
         <embed ref={secondAnimRef} src='resume.pdf' type='application/pdf' className={styles.pdf} />
-        <form ref={thirdAnimRef} className={styles.form} action="get" action="resume.pdf">
+        <form ref={thirdAnimRef} className={styles.form} action="get" action="resume.pdf" target="_blank">
           <Button>Download Resume</Button>
         </form>
       </main>

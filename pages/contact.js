@@ -33,12 +33,12 @@ const Contact = ({ isTransitioning }) => {
       .to(firstCursorRef.current, { duration: 0.1, visibility: 'hidden' })
       .to(secondCursorRef.current, { duration: 0.1, visibility: 'visible' })
       .to(secondAnimRef.current, {
-        duration: 0.5,
+        duration: 1,
         text:
           `<a href='tel:(845) 243-0096'>Call me</a>, <a href='mailto: contact@alantran.tech'>email me</a>, <br/>` +
           spanify(`or please fill out below!`),
       })
-      .from(thirdAnimRef.current, { duration: 0.5, opacity: 0, y: 300 }, 0.5);
+      .from(thirdAnimRef.current, { duration: 0.5, opacity: 0, y: 300 });
   }, []);
 
   // will fire when page needs to transition
@@ -69,13 +69,13 @@ const Contact = ({ isTransitioning }) => {
             _
           </span>
         </h1>
-        <main ref={thirdAnimRef} className={styles.main}>
           <h4>
             <span ref={secondAnimRef}></span>
             <span ref={secondCursorRef} className={styles.cursor}>
               _
             </span>
           </h4>
+        <main ref={thirdAnimRef} className={styles.main}>
           <ContactForm />
         </main>
       </div>

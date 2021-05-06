@@ -9,12 +9,20 @@ const Cursor = ({ children }) => {
   return (
     <div
       ref={linksRef}
-      onPointerOut={(e) => {
+      onPointerLeave={(e) => {
         gsap.to(cursorRef.current, {
           opacity: 0,
         });
 
         //cursor will disappear when moving away from window
+      }}
+      onPointerOut={(e) => {
+        if(e.target.nodeName === 'EMBED' || e.target.nodeName === 'MAIN') {
+        gsap.to(cursorRef.current, {
+          opacity: 0,
+        });
+        }
+        //cursor will disappear when moving into PDF
       }}
       onPointerMove={(e) => {
         if (e.target.localName === 'li' || e.target.localName === 'a') {

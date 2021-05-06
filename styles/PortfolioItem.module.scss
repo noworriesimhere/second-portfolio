@@ -16,13 +16,16 @@
     color: inherit;
   }
 
+  img {
+    border-radius: 15px;
+  }
   &:hover {
     color: var(--color-background-dark);
     box-shadow: 0 4px var(--color-background-dark);
     top: 1px;
 
     img {
-      opacity: 0.05;
+      opacity: 0.08;
     }
 
     a {

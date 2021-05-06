@@ -81,7 +81,7 @@ const About = ({ isTransitioning }) => {
             duration: 0.75,
             y: 0,
           },
-          0
+          .5
         )
         .to(
           thirdAnimRef.current,
@@ -99,7 +99,7 @@ const About = ({ isTransitioning }) => {
             duration: 0.75,
             y: 500,
           },
-          0
+          .5
         )
         .to(
           thirdAnimRef.current,
