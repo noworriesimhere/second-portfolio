@@ -3,9 +3,11 @@
   flex-direction: column;
   width: 95%;
   height: 100%;
-  max-height: 100vh;
-  overflow: scroll;
+  overflow: hidden;
   justify-content: center;
+  @media (hover: none) {
+
+  }
 
 }
 
@@ -17,6 +19,8 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
+  overflow: scroll;
+  height: 90vh;
 
   @media screen and (max-width: 620px) {
     div:last-child {
