@@ -9,8 +9,7 @@ const textArray = [
   'push to Github',
   'express frustration in commit messages',
   'need to refactor more',
-  'am working at being a Google ninja',
-  'write clean code',
+  'am working at being a Googling ninja',
   'wonder why I started coding',
   'love learning languages',
   'click on purple links often',
@@ -20,6 +19,9 @@ const textArray = [
   'take long walks on the beach',
   `think you've been clicking this a lot`,
   `type this fast...`,
+  'can design your website',
+  'help businesses with their sites',
+
 ];
 
 export const shuffledArray = textArray.sort(() => Math.random() - 0.5);
@@ -36,6 +38,29 @@ export const projects = [
     src: '/portfolio-wedding.png',
     url: 'https://wedding-project-f3ecc.web.app/',
     github: 'https://github.com/noworriesimhere/wedding-site',
+    key: 6,
+  },
+  {
+    name: 'Green Ink',
+    date: 'May 2021',
+    description: `WordPress <br />
+      PHP <br />
+      CSS <br />
+      `,
+    src: '/portfolio-greenink.png',
+    url: 'https://greenink.us.com',
+    key: 5,
+  },
+  {
+    name: 'Cali Fashion',
+    date: 'April 2021',
+    description: `WordPress <br />
+      Elementor <br />
+      PHP <br />
+      CSS <br />
+      `,
+    src: '/portfolio-califashion.png',
+    url: 'https://californiafashion.net',
     key: 4,
   },
   {

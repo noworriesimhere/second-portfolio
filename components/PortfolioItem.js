@@ -48,11 +48,11 @@ const PortfolioItem = ({ name, date, description, src, url, github }) => {
         <h4>
           <a href={url} target='_blank' ref={firstAnimRef}></a>
         </h4>
-
+        {github && 
         <h5>
           <a href={github} target='_blank' ref={secondAnimRef}></a>
         </h5>
-
+        }
         <small className={styles.rightAlign} ref={thirdAnimRef}></small>
 
         <p ref={fourthAnimRef}></p>
