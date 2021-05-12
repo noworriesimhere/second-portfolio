@@ -10,9 +10,13 @@
 
   @media screen and (max-width: 620px) {
     height: 80vh;
-
+    justify-content: center;
+    h1 {
+      font-size: 3.8rem;
+    }
     h3 {
-      padding-top: calc(var(--vh, 1vh) * 25);
+      padding: 2rem 0;
+      height: 10rem;
     }
   }
 
@@ -34,7 +38,6 @@
   font-family: 'Nunito', sans-serif;
   color: var(--color-background-dark);
   padding: 25px 80px;
-  transform: translateY(200px);
   border-radius: 15px;
   box-shadow: 0 5px var(--color-background-dark);
   margin: 1rem 0;

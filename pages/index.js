@@ -2,6 +2,8 @@ import React, { useRef, useState, useEffect } from 'react';
 import Head from 'next/head';
 import styles from '../styles/Home.module.scss';
 
+import { useResizeDetector } from 'react-resize-detector';
+
 import { shuffledArray } from '../utils/data';
 import { spanify } from '../utils/utilFunctions';
 import { useNonInitialEffect } from '../hooks/useNonInitialEffect';
@@ -16,8 +18,14 @@ export default function Home({ isTransitioning }) {
   const [message, setMessage] = useState('write code');
   const [counter, setCounter] = useState(0);
 
+  const { width } = useResizeDetector();
+
+
+
   const firstAnimRef = useRef();
   const secondAnimRef = useRef();
+  const thirdAnimRef = useRef();
+
   const messageRef = useRef();
   const firstCursorRef = useRef();
   const secondCursorRef = useRef();
@@ -42,8 +50,9 @@ export default function Home({ isTransitioning }) {
         duration: 0.5,
         text: message,
       })
-      .to(buttonRef.current, { duration: 1, y: 0 }, '-=1.5');
+      .from(buttonRef.current, { duration: 1, y: 300 }, '-=1.5');
   }, []);
+
 
   // fires when button is clicked
   useNonInitialEffect(() => {
