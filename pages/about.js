@@ -18,7 +18,7 @@ import { TextPlugin } from 'gsap/dist/TextPlugin';
 gsap.registerPlugin(TextPlugin, RoughEase);
 
 const About = ({ isTransitioning }) => {
-  const [currentTech, setCurrentTech] = useState(undefined);
+  const [currentTech, setCurrentTech] = useState(true);
   const [title, setTitle] = useState('');
   const [subtitle, setSubTitle] = useState('');
 
@@ -43,7 +43,7 @@ const About = ({ isTransitioning }) => {
       setSubTitle('My skills and how I learned them');
     } else {
       setTitle('Web Developer');
-      setSubTitle('Some self taught skills');
+      setSubTitle('Tap below to learn more');
     }
   }, [width]);
 
@@ -61,19 +61,42 @@ const About = ({ isTransitioning }) => {
         text: spanify(subtitle),
       })
       .to(secondCursorRef.current, { duration: 0.1, visibility: 'hidden' })
-      .to(thirdCursorRef.current, { duration: 0.1, visibility: 'visible' });
+      .to(thirdCursorRef.current, { duration: 0.1, visibility: 'visible' })
 
     techsAnimRefs.forEach((tech, i) => {
-      masterTL.to(tech.current, {
+      masterTL
+      .to(tech.current, {
         duration: 0.25,
         text: technologies[i].name,
-      });
+      })
+      ;
     });
+    if (width < 620) {
+    masterTL
+    .fromTo(
+      fourthAnimRef.current,
+      { y: 500 },
+      {
+        duration: 0.75,
+        y: 325,
+      },
+    )}
   }, [title, subtitle]);
 
-  useEffect(() => {
+  useNonInitialEffect(() => {
     if (!currentTech) {
-      masterTL
+      if (width < 620) {
+        masterTL
+        .fromTo(
+          fourthAnimRef.current,
+          { y: 500 },
+          {
+            duration: 0.75,
+            y: 325,
+          },
+        )
+      } else {
+        masterTL
         .fromTo(
           fourthAnimRef.current,
           { y: 500 },
@@ -83,6 +106,9 @@ const About = ({ isTransitioning }) => {
           },
           .5
         )
+      }
+
+      masterTL
         .to(
           thirdAnimRef.current,
           {

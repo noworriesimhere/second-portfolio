@@ -82,7 +82,9 @@ const Cursor = ({ children }) => {
         });
       }}
     >
+
       <div className='cursor' ref={cursorRef} />
+
       {children}
     </div>
   );

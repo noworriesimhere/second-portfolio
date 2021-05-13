@@ -14,6 +14,7 @@
   @media screen and (max-width: 620px) {
     display: flex;
     flex-direction: column;
+    height: 100vh;
   }
 
   header {
@@ -32,7 +33,7 @@
   .left {
     grid-area: d;
     @media screen and (max-width: 620px) {
-      margin-top: 3rem;
+      margin-top: 1rem;
     }
     @media (hover: none) {
       a:hover {
@@ -47,11 +48,8 @@
   grid-area: c;
 
   div {
-    position: relative;
     height: 100%;
-    @media screen and (max-width: 620px) {
-      display: none;
-    }
+
   }
   h5 {
     margin: 0;
@@ -61,6 +59,10 @@
     opacity: 0;
     margin: 0;
     transition: all 0.75s ease;
+
+    @media screen and (max-width: 620px) {
+      display: none;
+    }
   }
   .portrait {
     z-index: 2;

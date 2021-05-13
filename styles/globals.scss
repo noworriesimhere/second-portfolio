@@ -77,6 +77,10 @@ p {
   transform-origin: 50% 50%;
   mix-blend-mode: difference;
   opacity: 0;
+
+  @media screen and (hover: none) {
+    display: none;
+  }
 }
 
 .turnMe {
