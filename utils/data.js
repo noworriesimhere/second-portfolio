@@ -64,7 +64,7 @@ export const projects = [
     key: 4,
   },
   {
-    name: 'First Portfolio',
+    name: 'Freelance Site',
     date: 'December 2020',
     description: `HTML <br />
     PostCSS <br />
@@ -72,7 +72,7 @@ export const projects = [
     Webpack
     `,
     src: '/portfolio-first.png',
-    url: 'https://alantran.netlify.app/',
+    url: 'https://alantran.tech/',
     github: 'https://github.com/noworriesimhere/personal-portfolio',
     key: 3,
   },

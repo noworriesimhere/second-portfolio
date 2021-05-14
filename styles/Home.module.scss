@@ -53,6 +53,10 @@
   top: 5px;
 }
 
+.message {
+  color: var(--color-accent)
+}
+
 .cursor {
   visibility: hidden;
   animation-name: blink;

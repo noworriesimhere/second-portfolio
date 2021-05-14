@@ -41,7 +41,7 @@ const About = ({ isTransitioning }) => {
   useEffect(() => {
     if (width > 1180) {
       setTitle('Self Teaching Developer');
-      setSubTitle('My skills and how I learned them');
+      setSubTitle('Hover below to see my coding journey');
     } else {
       setTitle('Web Developer');
       setSubTitle('Tap below to learn more');

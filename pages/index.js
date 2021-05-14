@@ -102,7 +102,7 @@ export default function Home({ isTransitioning }) {
           </h1>
           <h3>
             <span ref={secondAnimRef}></span>
-            <span ref={messageRef}></span>
+            <span className={styles.message} ref={messageRef}></span>
             <span ref={secondCursorRef} className={styles.cursor}>
               _
             </span>
