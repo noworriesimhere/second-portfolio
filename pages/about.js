@@ -10,6 +10,7 @@ import { spanify } from '../utils/utilFunctions';
 import { useNonInitialEffect } from '../hooks/useNonInitialEffect';
 
 import { useResizeDetector } from 'react-resize-detector';
+import { isMobileOnly } from "react-device-detect";
 
 import { gsap } from 'gsap/dist/gsap';
 import { RoughEase } from 'gsap/dist/EasePack';
@@ -18,7 +19,7 @@ import { TextPlugin } from 'gsap/dist/TextPlugin';
 gsap.registerPlugin(TextPlugin, RoughEase);
 
 const About = ({ isTransitioning }) => {
-  const [currentTech, setCurrentTech] = useState(true);
+  const [currentTech, setCurrentTech] = useState(undefined);
   const [title, setTitle] = useState('');
   const [subtitle, setSubTitle] = useState('');
 
@@ -47,7 +48,7 @@ const About = ({ isTransitioning }) => {
     }
   }, [width]);
 
-  useNonInitialEffect(() => {
+  useEffect(() => {
     masterTL
       .to(firstCursorRef.current, { duration: 0.1, visibility: 'visible' })
       .to(firstAnimRef.current, {
@@ -71,28 +72,19 @@ const About = ({ isTransitioning }) => {
       })
       ;
     });
-    if (width < 620) {
-    masterTL
-    .fromTo(
-      fourthAnimRef.current,
-      { y: 500 },
-      {
-        duration: 0.75,
-        y: 325,
-      },
-    )}
+
   }, [title, subtitle]);
 
-  useNonInitialEffect(() => {
+  useEffect(() => {
     if (!currentTech) {
-      if (width < 620) {
+      if (isMobileOnly) {
         masterTL
         .fromTo(
           fourthAnimRef.current,
           { y: 500 },
           {
             duration: 0.75,
-            y: 325,
+            y: 300,
           },
         )
       } else {
@@ -104,7 +96,7 @@ const About = ({ isTransitioning }) => {
             duration: 0.75,
             y: 0,
           },
-          .5
+          
         )
       }
 
@@ -125,7 +117,7 @@ const About = ({ isTransitioning }) => {
             duration: 0.75,
             y: 500,
           },
-          .5
+        
         )
         .to(
           thirdAnimRef.current,

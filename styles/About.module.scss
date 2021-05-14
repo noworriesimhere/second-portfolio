@@ -33,7 +33,8 @@
   .left {
     grid-area: d;
     @media screen and (max-width: 620px) {
-      margin-top: 1rem;
+      margin-top: .5rem;
+      z-index: 1;
     }
     @media (hover: none) {
       a:hover {
@@ -61,7 +62,7 @@
     transition: all 0.75s ease;
 
     @media screen and (max-width: 620px) {
-      display: none;
+      transform: translate(220px, -250px);
     }
   }
   .portrait {
