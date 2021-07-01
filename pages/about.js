@@ -219,7 +219,6 @@ const About = ({ isTransitioning }) => {
                 className={styles.img}
               />
             </aside>
-            <p>Available to work!</p>
           </div>
         </section>
       </main>

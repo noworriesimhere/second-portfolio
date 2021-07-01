@@ -21,6 +21,17 @@
     grid-area: a;
     margin-bottom: 2rem;
 
+    h3 {
+
+
+      span {
+        color: var(--color-accent);
+        &:hover {
+          color: var(--color-text);
+        }
+      }
+    }
+
     @media screen and (max-width: 620px) {
       margin-bottom: 0;
     }

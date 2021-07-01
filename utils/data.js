@@ -28,6 +28,18 @@ export const shuffledArray = textArray.sort(() => Math.random() - 0.5);
 
 export const projects = [
   {
+    name: 'Florist Portfolio',
+    date: 'June 2021',
+    description: `Vue <br />
+      Firebase <br />
+      SCSS <br />
+      `,
+    src: '/portfolio-florist.png',
+    url: 'https://somethingblooms.florist/',
+    github: 'https://github.com/noworriesimhere/irene-vue-firebase',
+    key: 7,
+  },
+  {
     name: 'Wedding Site',
     date: 'January 2021',
     description: `React <br />
@@ -127,5 +139,9 @@ export const technologies = [
   {
     name: 'PHP / Wordpress / Elementor',
     description: `Despite being an older language, PHP and Wordpress still make up the majority of the web. <br/><br/> Having learned Javascript made learning PHP fairly easy. <br/><br/> I took what I learned to set up an ecommerce shop with Wordpress, Woocommerce, and Elementor.`,
+  },
+  {
+    name: 'Vue 3',
+    description: `I was asked to help build a website for someone starting a small business. It was the perfect chance to learn a different framework. <br/><br/> Vue 3 was just released, and I was able to use the concepts from React to pick it up, and to build a Single Page Application with Vue's built in transitions.`,
   },
 ];

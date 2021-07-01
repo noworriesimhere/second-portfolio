@@ -9,6 +9,15 @@
   max-height: 100vh;
   overflow: hidden;
 
+  h4 {
+    span span {
+      color: var(--color-accent);
+      &:hover {
+        color: var(--color-text);
+      }
+    }
+  }
+
   @media screen and (max-width: 620px) {
     justify-content: flex-start;
   }
